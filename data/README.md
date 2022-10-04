@@ -1,0 +1,3 @@
+- `raw`: raw data as shared by the NPO (e.g. excel files). create subfolders as needed. this is git-ignored to avoid pushing personal data to GitHub
+- `processed_gdpr`: for data which was cleaned in some way but still contains identifiable information, i.e. must not be pushed to GitHub
+- `processed`: data that can be pushed to GitHub (be aware that just deleting names/email addresses is not sufficient most of the times for data to be properly anonymized!)
