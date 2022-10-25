@@ -1,12 +1,15 @@
-> Yet TODO
+# Data to Metabase: Automated Curation with the Metabase API
 
-Project name
-================
+## What is this project about?
 
-# What is this project about?
+One of two Metabase-centric projects (see [Metabase-to-Google](https://github.com/CorrelAid/metabase-to-google)). This project will explore automated approaches to (pre-)curating a Metabase instance with Dashboards and queries through the [Metabase API](https://www.metabase.com/docs/latest/api-documentation).
 
-summarize in three sentences what this project is about and what central
-features it has.
+Two appropaches are possible
+
+- recommended: send GET/POST requests to the Metabase API to run queries remotely
+- (not recommended / warning): write directly into the Metabase DB where Metabase stores it's meta data
+
+For both cases, we want to track created cards and dashboards in a file or spreadsheed (e.g. Google Sheets).
 
 # Setup
 
@@ -44,18 +47,40 @@ and commit and push your `renv.lock`.
 Other team members can then run `renv::restore()` to install the added
 package(s) on their laptop.
 
-## Data
+## Access data
 
-You need the following data files in order to run this project:
+To access the data for this challenge, you first need to get
+secrets/passwords. Reach out to the project host or team lead.
 
-``` r
-system2("tree", c("data/raw")) # works on mac and potentially linux. 
-```
+To connect to the Coolify Postgres database, you need to store your
+credentials in the `.Renviron` file. We'll use a **project**-specific `.Renviron` file:
+
+- with `usethis::edit_r_environ(scope = "project")`
+- or copy template with `cp .Renviron.example .Renviron` and edit there
+
+Copy the content from the decrypted secret link. It should look
+something like this:
+
+    # logins for supabase
+    COOLIFY_NAME='postgres'
+    COOLIFY_HOST='your-supabase-url'
+    COOLIFY_PORT='5432'
+    COOLIFY_USER='postgres'
+    COOLIFY_PASSWORD='your-supabase-pw'
+    COOLIFY_DB='defaultdb'
+
+Restart your R session (Session -> Restart R Session or
+`.rs.restartR()`)
+
+Read and run `R/00-connect-to-coolify.R` or explore in `00-db-connection-test.Rmd`
+
+### Description of relevant tables
+
+> TODO
+
+For now we'll be working with the `penguins` data set from the [`palmerpenguins`](https://allisonhorst.github.io/palmerpenguins/) R package.
 
 # Developer information
-
-\[the following can also be moved to the wiki if you decide to have
-one\]
 
 ## Definition of Done
 
@@ -73,18 +98,18 @@ one\]
 explain how the output(s) of this project can be handled/operated, for
 example:
 
--   how to knit the report(s)
--   where to create/find the data visualizations
--   how to update data
--   what would need to be updated if someone wanted to re-run your
-    analysis with different data
+- how to knit the report(s)
+- where to create/find the data visualizations
+- how to update data
+- what would need to be updated if someone wanted to re-run your
+  analysis with different data
 
 # Limitations
 
 be honest about the limitations of your project, e.g.:
 
--   methodological: maybe another model would be more suitable?
--   reproducibility: what are limits of reproducibility? is there
-    something hard-coded/specific to the data that you used?
--   best practices: maybe some code is particularly messy and people
-    working on it in the future should know about it in advance?
+- methodological: maybe another model would be more suitable?
+- reproducibility: what are limits of reproducibility? is there
+  something hard-coded/specific to the data that you used?
+- best practices: maybe some code is particularly messy and people
+  working on it in the future should know about it in advance?
