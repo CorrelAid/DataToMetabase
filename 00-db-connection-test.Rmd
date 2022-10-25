@@ -1,0 +1,87 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+---
+title: "R Notebook"
+---
+
+```{r}
+# install.packages("palmerpenguins")
+library(tidyverse)
+```
+
+# Load Penguin Data (Local Copy)
+
+```{r}
+data_local_raw <- palmerpenguins::penguins
+```
+
+```{r}
+head(data_local_raw)
+```
+
+# Example Aggergations
+
+## Simple Group By / Count
+
+```{r}
+example_view_simple <- data_local_raw %>%
+  group_by(island) %>%
+  count()
+```
+
+## Faceting, a list of Group/Counts, Split by Island
+
+```{r}
+example_view_facets <- data_local_raw %>%
+  group_by(island) %>%
+  group_map(~group_by(., species) %>%  count())
+
+facets
+```
+
+# Connect to DB
+
+```{r}
+# con <- DBI::dbConnect()
+source("R/00-connect-to-coolify.R")
+con # <- this is the currently open connection
+```
+
+## Get existing table names from DB
+
+```{r}
+(db_tables <- DBI::dbListTables(con))
+```
+
+## Write Local Copy of Pengunis Data to Remote DB
+
+> ! only do so if table does not exist in remote DB !
+
+```{r}
+if (!"penguins" %in% db_tables) {
+  DBI::dbWriteTable(con, name = "penguins", value = data_local_raw)
+}
+```
+
+## Read remote Penguins data from DB
+
+```{r}
+data_remote_raw <- DBI::dbReadTable(con, "penguins")
+
+head(data_remote_raw)
+```
+
+## Compare local and remote data with `waldo`
+
+```{r}
+waldo::compare(data_local_raw, data_remote_raw)
+```
+
+# Import: Disconnect from DB
+
+```{r}
+DBI::dbDisconnect(con)
+```
