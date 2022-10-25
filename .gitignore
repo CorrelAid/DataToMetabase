@@ -2,6 +2,7 @@
 .Rhistory
 .RData
 .Ruserdata
+.Renviron
 
 data/raw
 data/preprocessed_gdpr
