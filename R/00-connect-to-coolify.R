@@ -4,7 +4,7 @@ library(readr)
 
 # PREREQUISITE: content from secret link (see notion infrastructure part)
 # open your user Renviron file by using
-#usethis::edit_r_environ(scope = "project")
+# usethis::edit_r_environ(scope = "project")
 # OR: if you want to have a local Renviron file in your project folder
 # readRenviron(".Renviron")
 
@@ -16,12 +16,14 @@ db_user <- Sys.getenv("COOLIFY_USER")
 db_password <- Sys.getenv("COOLIFY_PASSWORD")
 
 # create connection
-con <- DBI::dbConnect(drv = RPostgres::Postgres(),
-                      host = db_host,
-                      port = db_port,
-                      dbname = db_name,
-                      user = db_user,
-                      password = db_password)
+con <- DBI::dbConnect(
+  drv = RPostgres::Postgres(),
+  host = db_host,
+  port = db_port,
+  dbname = db_name,
+  user = db_user,
+  password = db_password
+)
 
 # DBI::dbListTables(con) # shows tables and views :)
 
