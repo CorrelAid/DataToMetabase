@@ -23,16 +23,14 @@ con <- DBI::dbConnect(drv = RPostgres::Postgres(),
                       user = db_user,
                       password = db_password)
 
-# DBI::dbListTables(con) # shows tables and views :) 
+# DBI::dbListTables(con) # shows tables and views :)
 
 # example to read the metadata and values about the diversity profile questions
 # diversity_responses <- DBI::dbReadTable(con, "diversity_responses")
 # diversity_items <- DBI::dbReadTable(con, "diversity_items")
 # diversity_answer_options <- DBI::dbReadTable(con, "diversity_answer_dict")
 # diversity_groups <-   DBI::dbReadTable(con, "diversity_groups")
-# 
 # readr::write_rds(diversity_responses, here::here("data", "raw", "diversity_responses.rds"))
-# 
 # # code to show how to reimport data file - copy to your code if needed
 # diversity_responses <- readr::read_rds(here::here("data", "raw", "diversity_responses.rds"))
 

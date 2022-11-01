@@ -4,8 +4,8 @@ output: html_notebook
 ---
 
 ---
-title: "R Notebook"
----
+
+## title: "R Notebook"
 
 ```{r}
 # install.packages("palmerpenguins")
