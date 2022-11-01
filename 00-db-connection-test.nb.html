@@ -1682,17 +1682,23 @@ overflow-y: auto;
 border: 1px solid #ddd;
 border-radius: 4px;
 }
-.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-content: "\e259";
+.tabset-dropdown > .nav-tabs > li.active:before {
+content: "";
 font-family: 'Glyphicons Halflings';
 display: inline-block;
 padding: 10px;
 border-right: 1px solid #ddd;
 }
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-content: "\e258";
-font-family: 'Glyphicons Halflings';
+content: "";
 border: none;
+}
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+content: "";
+font-family: 'Glyphicons Halflings';
+display: inline-block;
+padding: 10px;
+border-right: 1px solid #ddd;
 }
 .tabset-dropdown > .nav-tabs > li.active {
 display: block;
@@ -1758,6 +1764,20 @@ display: none;
 <pre class="r"><code># install.packages(&quot;palmerpenguins&quot;)
 library(tidyverse)</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiUmVnaXN0ZXJlZCBTMyBtZXRob2RzIG92ZXJ3cml0dGVuIGJ5ICdkYnBseXInOlxuICBtZXRob2QgICAgICAgICBmcm9tXG4gIHByaW50LnRibF9sYXp5ICAgICBcbiAgcHJpbnQudGJsX3NxbCAgICAgIFxu4pSA4pSAIEF0dGFjaGluZyBwYWNrYWdlcyDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIAgdGlkeXZlcnNlIDEuMy4xIOKUgOKUgFxu4pyUIGdncGxvdDIgMy4zLjYgICAgIOKclCBwdXJyciAgIDAuMy40XG7inJQgdGliYmxlICAzLjEuOCAgICAg4pyUIGRwbHlyICAgMS4wLjlcbuKclCB0aWR5ciAgIDEuMi4wICAgICDinJQgc3RyaW5nciAxLjQuMFxu4pyUIHJlYWRyICAgMi4xLjIgICAgIOKclCBmb3JjYXRzIDAuNS4xXG7ilIDilIAgQ29uZmxpY3RzIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgCB0aWR5dmVyc2VfY29uZmxpY3RzKCkg4pSA4pSAXG7inJYgZHBseXI6OmZpbHRlcigpIG1hc2tzIHN0YXRzOjpmaWx0ZXIoKVxu4pyWIGRwbHlyOjpsYWcoKSAgICBtYXNrcyBzdGF0czo6bGFnKClcbiJ9 -->
+<pre><code>Registered S3 methods overwritten by &#39;dbplyr&#39;:
+  method         from
+  print.tbl_lazy     
+  print.tbl_sql      
+── Attaching packages ───────────── tidyverse 1.3.1 ──
+✔ ggplot2 3.3.6     ✔ purrr   0.3.4
+✔ tibble  3.1.8     ✔ dplyr   1.0.9
+✔ tidyr   1.2.0     ✔ stringr 1.4.0
+✔ readr   2.1.2     ✔ forcats 0.5.1
+── Conflicts ──────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <div id="load-penguin-data-local-copy" class="section level1">
@@ -1802,17 +1822,17 @@ library(tidyverse)</code></pre>
 <h2>Faceting, a list of Group/Counts, Split by Island</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZXhhbXBsZV92aWV3X2ZhY2V0cyA8LSBkYXRhX2xvY2FsX3JhdyAlPiVcbiAgZ3JvdXBfYnkoaXNsYW5kKSAlPiVcbiAgZ3JvdXBfbWFwKH5ncm91cF9ieSguLCBzcGVjaWVzKSAlPiUgIGNvdW50KCkpXG5cbmZhY2V0c1xuYGBgIn0= -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZXhhbXBsZV92aWV3X2ZhY2V0cyA8LSBkYXRhX2xvY2FsX3JhdyAlPiVcbiAgZ3JvdXBfYnkoaXNsYW5kKSAlPiVcbiAgZ3JvdXBfbWFwKH5ncm91cF9ieSguLCBzcGVjaWVzKSAlPiUgIGNvdW50KCkpXG5cbmV4YW1wbGVfdmlld19mYWNldHNcbmBgYCJ9 -->
 <pre class="r"><code>example_view_facets &lt;- data_local_raw %&gt;%
   group_by(island) %&gt;%
   group_map(~group_by(., species) %&gt;%  count())
 
-facets</code></pre>
+example_view_facets</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-output-begin eyJkYXRhIjoiW1sxXV1cbiJ9 -->
 <pre><code>[[1]]</code></pre>
 <!-- rnb-output-end -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImdyb3VwZWRfZGYiLCJ0YmxfZGYiLCJ0YmwiLCJkYXRhLmZyYW1lIl0sIm5yb3ciOjIsIm5jb2wiOjIsInN1bW1hcnkiOnsiQSB0aWJibGUiOlsiMiDDlyAyIl0sIkdyb3VwcyI6WyJzcGVjaWVzIFsyXSJdfX0sInJkZiI6Ikg0c0lBQUFBQUFBQUJsMVFUVS9FSUJDbDI4Vk5tMmlhK0Rkc0U2TUhyMGFqZDZQSlhyRmxYU0lPRGJEcXdZTy92SFZZbUkzTEFYanptSTgzNytsK2ZWV3ZhOFpZeVphTGdwVWNJZU12encvdERVTUdnNEl0V1JYZWIwdzZSNEJrZVJwZi9BeVZ4NGtuV241SzdSQTFzVzlrYndlcGxVeFJkYmRWNEx3VkkzMC9TdkRHWksxNHI0V2pUb2YrRzlGN1l4Rk5lRWpKQlo2ZldGN09XVVU5Q0MrNmpSVWZNaHRRV2ZQVkFmS09XdjNpTmMvemxDdWhwR1kvTDVJck44cGVJWjBjZ3FqcHFIQmxScThNWU9raW1NY3phWVhOaUdZSFlkVFE5dHNkdkxlWDEwRi9jcG9sa1VYYStSOE9Nem50emNrcENXOEt5SE91eGF2VUtUakR4ZmNyZGFOVjRNa29aRjNualJlVVYvZEdFeE1Obi80QUs1NjNtRFFDQUFBPSJ9 -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImdyb3VwZWRfZGYiLCJ0YmxfZGYiLCJ0YmwiLCJkYXRhLmZyYW1lIl0sIm5yb3ciOjIsIm5jb2wiOjIsInN1bW1hcnkiOnsiQSB0aWJibGUiOlsiMiDDlyAyIl0sIkdyb3VwcyI6WyJzcGVjaWVzIFsyXSJdfX0sInJkZiI6Ikg0c0lBQUFBQUFBQUJsMVF5MDdETUJEY05EVlZJZ0dWK0EyU0M2ckVGWUhnamtEcTFTUXV0V3JzeUhhQkF3ZStQR0ZkZTFIcmcrM1o4VDVtNS9saGZWT3Zhd0FvWVQ0cm9HUUlnYjIrUERhM2dBd0dCY3loQ3U4M0psMGhRTEk4ank5K2hzclR4RE1sUG9WeWlKYXhiMlR2ZXFHa1NGRjF2NVhhZWNzSCtuNFMyaHVUdFdLZDRvNDYvZmZmOE00YmkyakVRMHF1OGZ6RThuTEtLdXFlZTk1dUxQOFEyWURLbXE5V0krK28xUzllMHpTTnVSSktXaDdtUlhMaEJ0RkpwSk5ET21vNktWeVl3VXVqc1hRV3pHT1p0TUpteE9WZWgxRjkwMjMzZXRlc2d2eGtOQ1NOUlZyNUNJZVJqTlptWkpUUTcxS1Q1VXp4TjZGU2NJRjdIelpxQnl1MUo1K1FkYTAzbmxOZTNSbEZUUFI3L0FPcmpzdmhNd0lBQUE9PSJ9 -->
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["species"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["n"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"Adelie","2":"44"},{"1":"Gentoo","2":"124"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[2]},"pages":{}}}
@@ -1823,7 +1843,7 @@ facets</code></pre>
 <pre><code>
 [[2]]</code></pre>
 <!-- rnb-output-end -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImdyb3VwZWRfZGYiLCJ0YmxfZGYiLCJ0YmwiLCJkYXRhLmZyYW1lIl0sIm5yb3ciOjIsIm5jb2wiOjIsInN1bW1hcnkiOnsiQSB0aWJibGUiOlsiMiDDlyAyIl0sIkdyb3VwcyI6WyJzcGVjaWVzIFsyXSJdfX0sInJkZiI6Ikg0c0lBQUFBQUFBQUJsMVFUVXZFTUJDZGJqY3VMU2dGZjBjTG9nZXY0cUozVWRocmJMTnVNQ1lseWFwSGYzbnJwTW1JbTBNN2IxN200ODE3MnU2dTYxME5BQ1dzVndXVURDR3dsK2VIOWhhUXdhU0FOVlFoZm1QUkpRSWt5L01ZOFhHSko0Vm5TbndLNVJBMWNXNWs3d2FocEVoWmRYK1Eybm5MUjNwK0ZOb2JrNDFpdmVLT0p2M04zL1BlRzR0b3dvK1VvRnpZeHZaeXpqcnFnWHZlN1MzL0VObUN5cHF2VGlQdmFOUVAvdVo1bm5JbFZOUXMreUs1Y2FQb0pkTEpJUjAxblRSdXpPaWwwZGk2Q3VheFRGcGhNNkk1NnJCcWFQdkRVYiszVnpkQmYzSWFrc2prK244Y2RqSzZtNUZUUXI5SlRaNHp4VitGU3NrRkhyNmMxSTFXYWs5R0llczZienludXJvM2lwaG8rUFFMREFiY25qUUNBQUE9In0= -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImdyb3VwZWRfZGYiLCJ0YmxfZGYiLCJ0YmwiLCJkYXRhLmZyYW1lIl0sIm5yb3ciOjIsIm5jb2wiOjIsInN1bW1hcnkiOnsiQSB0aWJibGUiOlsiMiDDlyAyIl0sIkdyb3VwcyI6WyJzcGVjaWVzIFsyXSJdfX0sInJkZiI6Ikg0c0lBQUFBQUFBQUJsMVF5MDdETUJEY05EVlZJbEVxOFIzSkJTRnhSVlJ3UnlEMWFoS1hXaGc3c2wzZzJDOVBXTWRlUkgxSWRuYThqOWw1M3U1dTZsME5BQ1VzRndXVURDR3cxNWZINWc2UXdhU0FKVlFoL21EUk5RSWt5OHNZOFhHT1o0VVhTbndKNVJCdDR0ekkzdmRDU1pHeTZ1RWd0Zk9XRC9UOEpMUTNKaHZGT3NVZFRmcWJ2K2VkTnhiUmlCOHBRYm13amUzbGxIWFVQZmU4M1Z2K0tiSUZsVFhmclViZTBhZ1QvcVpwR25NbFZMU1o5MFZ5NVFiUlNhU1RRenBxT210Y21jRkxvN0YxRWN4am1iVENac1RWVVlkVmZkTWRqdnFqdVEzeWs5R1FOQ2JULytPd2t0SFpqSXdTK2wxcXNwd3AvaVpVU3RaNDkzeFJPMWlwUGZtRXJHdTk4WnpxNnM0b1lxTGY0eS91dHVZOE13SUFBQT09In0= -->
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["species"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["n"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"Adelie","2":"56"},{"1":"Chinstrap","2":"68"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[2]},"pages":{}}}
@@ -1834,7 +1854,7 @@ facets</code></pre>
 <pre><code>
 [[3]]</code></pre>
 <!-- rnb-output-end -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImdyb3VwZWRfZGYiLCJ0YmxfZGYiLCJ0YmwiLCJkYXRhLmZyYW1lIl0sIm5yb3ciOjEsIm5jb2wiOjIsInN1bW1hcnkiOnsiQSB0aWJibGUiOlsiMSDDlyAyIl0sIkdyb3VwcyI6WyJzcGVjaWVzIFsxXSJdfX0sInJkZiI6Ikg0c0lBQUFBQUFBQUJsMVFVVS9ESUJDK3RzT2xUVFJOL0IxdHNyZ0hYNDFHMzQwbWUwWEtIQkdQQnBqNjZDL2Z2Qll3R3lUQTNjZmR4MzNmODhQbXB0azBBRkRCb2l5Z1loUUNlMzE1N0c2QkVFb0tXRUE5M1Q5VWRFMEJnZFhsL0REdnM2SUxMYitrZGhTMWdUT2dkNFBVU3Nhc3Z0OHBkTjd5TVQwL1NmVEdaRlJNYU80UzB6Ly9sZ3R2TEVVSDJtbUtkV2l0amxsMU0zRFArNjNsbnpJanI2MzU3cEZ3RjJuS1h6cU90UElwVWxFN0t3L2cwbzFTS0lLak14am1PV3RjbXRFcmc5UmFUcWF4YkxUQ1prQzd4K21yb1JPN1BYNTBxL1UwZjlRSEoxcUxrN2dNZjdLa215V1hKTDRyVEg0enpkK2tqc2tWQ1o4bDlhTlY2Sk5SaExyZUc4OVRYU09NVGtndysvQUhkNzNaenl3Q0FBQT0ifQ== -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImdyb3VwZWRfZGYiLCJ0YmxfZGYiLCJ0YmwiLCJkYXRhLmZyYW1lIl0sIm5yb3ciOjEsIm5jb2wiOjIsInN1bW1hcnkiOnsiQSB0aWJibGUiOlsiMSDDlyAyIl0sIkdyb3VwcyI6WyJzcGVjaWVzIFsxXSJdfX0sInJkZiI6Ikg0c0lBQUFBQUFBQUJsMVF3VTRESVJDZDNTMDJ1NG5heE8vWXZWZ1RyMGFqZDZOSnI1U2xsaFJoQTFROSt1V3Rzd3RqV2tpQW1jZk1ZOTU3ZlZyZE5xc0dBQ3FZbFFWVURFTmc3Mi9QN1QwZ2dra0JNNmpIK3dlTGJqQkFzTHFjSHFaOVZuU2g1WmZVSHFORjVJem9ReSsxa2ltckg3ZksrT0Q0UU04djBnUnJNeW9tTlBmRTlNKy80U0pZaDlFQk4wMnhqSzNWTWF0dWVoNTR0M0g4VTJia3RiUGZuVUhjSjVyeUY0OGpybndLS2xwTXlpTTQ5NE1VQ3VIa2pJbnpuRFhPN1JDVU5kaGFqcWF4YkxUQ1pjRDEzb3hmOWEzWTdzMnV2UnZIVC9MZ1JHcHhFcGZ4UzBheUdaa2t6WWN5WkRmVGZDMTFTcTVROTZTb0c1d3lnWHhDMUhmQkJrNTFqYkNha09qMTRROEZPcjV0S3dJQUFBPT0ifQ== -->
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["species"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["n"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"Adelie","2":"52"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[1]},"pages":{}}}
@@ -1852,9 +1872,10 @@ facets</code></pre>
 <h1>Connect to DB</h1>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY29uXG5cbmBgYCJ9 -->
-<pre class="r"><code>con
-</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBjb24gPC0gREJJOjpkYkNvbm5lY3QoKVxuc291cmNlKFwiUi8wMC1jb25uZWN0LXRvLWNvb2xpZnkuUlwiKVxuY29uICMgPC0gdGhpcyBpcyB0aGUgY3VycmVudGx5IG9wZW4gY29ubmVjdGlvblxuYGBgIn0= -->
+<pre class="r"><code># con &lt;- DBI::dbConnect()
+source(&quot;R/00-connect-to-coolify.R&quot;)
+con # &lt;- this is the currently open connection</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-output-begin eyJkYXRhIjoiPFBxQ29ubmVjdGlvbj4gY2w3c3doajhjMDAyYjBvbXI3eDB5Zzlib0AxNDIuMTMyLjE2NC4yMjk6OTAwMVxuIn0= -->
 <pre><code>&lt;PqConnection&gt; cl7swhj8c002b0omr7x0yg9bo@142.132.164.229:9001</code></pre>
@@ -1865,20 +1886,28 @@ facets</code></pre>
 <h2>Get existing table names from DB</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuKGRiX3RhYmxlcyA8LSBEQkk6OmRiTGlzdFRhYmxlcyhjb24pKVxuXG5gYGAifQ== -->
-<pre class="r"><code>(db_tables &lt;- DBI::dbListTables(con))
-</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuKGRiX3RhYmxlcyA8LSBEQkk6OmRiTGlzdFRhYmxlcyhjb24pKVxuYGBgIn0= -->
+<pre class="r"><code>(db_tables &lt;- DBI::dbListTables(con))</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSBcInF1ZXN0aW9uX3Jlc3BvbnNlc193aWRlXCIgICAgICAgICAgIFwiZGl2ZXJzaXR5X2dyb3Vwc1wiICAgICAgICAgICAgICAgICBcbiBbM10gXCJkaXZlcnNpdHlfZ3JvdXBzX2RpY3RcIiAgICAgICAgICAgICBcImRpdmVyc2l0eV9pdGVtc19kaWN0XCIgICAgICAgICAgICAgXG4gWzVdIFwiZGl2ZXJzaXR5X2Fuc3dlcnNfZGljdFwiICAgICAgICAgICAgXCJkaXZlcnNpdHlfcmVzcG9uc2VzX3dpZGVfbGFiZWxsZWRcIlxuIFs3XSBcImRpdmVyc2l0eV9yZXNwb25zZXNfd2lkZVwiICAgICAgICAgIFwicXVlc3Rpb25fZ3JvdXBzXCIgICAgICAgICAgICAgICAgICBcbiBbOV0gXCJxdWVzdGlvbl9pdGVtc1wiICAgICAgICAgICAgICAgICAgICBcInJlc3BvbmRlbnRzXCIgICAgICAgICAgICAgICAgICAgICAgXG5bMTFdIFwiZGl2ZXJzaXR5X3Jlc3BvbnNlc1wiICAgICAgICAgICAgICAgXCJkaXZlcnNpdHlfaXRlbXNcIiAgICAgICAgICAgICAgICAgIFxuWzEzXSBcInF1ZXN0aW9uX2l0ZW1zX2RpY3RcIiAgICAgICAgICAgICAgIFwicXVlc3Rpb25fYW5zd2Vyc19kaWN0XCIgICAgICAgICAgICBcblsxNV0gXCJzdWJxdWVzdGlvbnNcIiAgICAgICAgICAgICAgICAgICAgICBcInN1YnF1ZXN0aW9uc19kaWN0XCIgICAgICAgICAgICAgICAgXG5bMTddIFwicXVlc3Rpb25fcmVzcG9uc2VzXCIgICAgICAgICAgICAgICAgXCJwZW5ndWluc1wiICAgICAgICAgICAgICAgICAgICAgICAgIFxuIn0= -->
-<pre><code> [1] &quot;question_responses_wide&quot;           &quot;diversity_groups&quot;                 
- [3] &quot;diversity_groups_dict&quot;             &quot;diversity_items_dict&quot;             
- [5] &quot;diversity_answers_dict&quot;            &quot;diversity_responses_wide_labelled&quot;
- [7] &quot;diversity_responses_wide&quot;          &quot;question_groups&quot;                  
- [9] &quot;question_items&quot;                    &quot;respondents&quot;                      
-[11] &quot;diversity_responses&quot;               &quot;diversity_items&quot;                  
-[13] &quot;question_items_dict&quot;               &quot;question_answers_dict&quot;            
-[15] &quot;subquestions&quot;                      &quot;subquestions_dict&quot;                
-[17] &quot;question_responses&quot;                &quot;penguins&quot;                         </code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSBcInJlc3BvbmRlbnRzXCIgICAgICAgICAgICAgICAgICAgICAgXG4gWzJdIFwicXVlc3Rpb25fcmVzcG9uc2VzX3dpZGVcIiAgICAgICAgICBcbiBbM10gXCJkaXZlcnNpdHlfZ3JvdXBzXCIgICAgICAgICAgICAgICAgIFxuIFs0XSBcImRpdmVyc2l0eV9ncm91cHNfZGljdFwiICAgICAgICAgICAgXG4gWzVdIFwiZGl2ZXJzaXR5X2l0ZW1zX2RpY3RcIiAgICAgICAgICAgICBcbiBbNl0gXCJkaXZlcnNpdHlfYW5zd2Vyc19kaWN0XCIgICAgICAgICAgIFxuIFs3XSBcImRpdmVyc2l0eV9yZXNwb25zZXNfd2lkZV9sYWJlbGxlZFwiXG4gWzhdIFwiZGl2ZXJzaXR5X3Jlc3BvbnNlc193aWRlXCIgICAgICAgICBcbiBbOV0gXCJkaXZlcnNpdHlfaXRlbXNcIiAgICAgICAgICAgICAgICAgIFxuWzEwXSBcInF1ZXN0aW9uX2dyb3Vwc1wiICAgICAgICAgICAgICAgICAgXG5bMTFdIFwicXVlc3Rpb25faXRlbXNcIiAgICAgICAgICAgICAgICAgICBcblsxMl0gXCJkaXZlcnNpdHlfcmVzcG9uc2VzXCIgICAgICAgICAgICAgIFxuWzEzXSBcInF1ZXN0aW9uX2l0ZW1zX2RpY3RcIiAgICAgICAgICAgICAgXG5bMTRdIFwicXVlc3Rpb25fYW5zd2Vyc19kaWN0XCIgICAgICAgICAgICBcblsxNV0gXCJzdWJxdWVzdGlvbnNcIiAgICAgICAgICAgICAgICAgICAgIFxuWzE2XSBcInN1YnF1ZXN0aW9uc19kaWN0XCIgICAgICAgICAgICAgICAgXG5bMTddIFwicGVuZ3VpbnNcIiAgICAgICAgICAgICAgICAgICAgICAgICBcblsxOF0gXCJxdWVzdGlvbl9yZXNwb25zZXNcIiAgICAgICAgICAgICAgIFxuIn0= -->
+<pre><code> [1] &quot;respondents&quot;                      
+ [2] &quot;question_responses_wide&quot;          
+ [3] &quot;diversity_groups&quot;                 
+ [4] &quot;diversity_groups_dict&quot;            
+ [5] &quot;diversity_items_dict&quot;             
+ [6] &quot;diversity_answers_dict&quot;           
+ [7] &quot;diversity_responses_wide_labelled&quot;
+ [8] &quot;diversity_responses_wide&quot;         
+ [9] &quot;diversity_items&quot;                  
+[10] &quot;question_groups&quot;                  
+[11] &quot;question_items&quot;                   
+[12] &quot;diversity_responses&quot;              
+[13] &quot;question_items_dict&quot;              
+[14] &quot;question_answers_dict&quot;            
+[15] &quot;subquestions&quot;                     
+[16] &quot;subquestions_dict&quot;                
+[17] &quot;penguins&quot;                         
+[18] &quot;question_responses&quot;               </code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -1890,11 +1919,17 @@ facets</code></pre>
 </blockquote>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaWYgKCFcInBlbmd1aW5zXCIgJWluJSBkYl90YWJsZXMpIHtcbiAgREJJOjpkYldyaXRlVGFibGUoY29uLCBuYW1lID0gXCJwZW5ndWluc1wiLCB2YWx1ZSA9IGRhdGFfbG9jYWxfcmF3KVxufVxuYGBgIn0= -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaWYgKCFcInBlbmd1aW5zXCIgJWluJSBkYl90YWJsZXMpIHtcbiAgcHJpbnQoXCJXcml0aW5nIHRhYmxlIGBwZW5ndWluc2AgdG8gREJcIilcbiAgREJJOjpkYldyaXRlVGFibGUoY29uLCBuYW1lID0gXCJwZW5ndWluc1wiLCB2YWx1ZSA9IGRhdGFfbG9jYWxfcmF3KVxufSBlbHNlIHtcbiAgcHJpbnQoXCJTa2lwcGluZy4gdGFibGUgYHBlbmd1aW5zYCBhbHJlYWR5IGV4aXN0cyBpbiBEQlwiKVxufVxuYGBgIn0= -->
 <pre class="r"><code>if (!&quot;penguins&quot; %in% db_tables) {
+  print(&quot;Writing table `penguins` to DB&quot;)
   DBI::dbWriteTable(con, name = &quot;penguins&quot;, value = data_local_raw)
+} else {
+  print(&quot;Skipping. table `penguins` already exists in DB&quot;)
 }</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiU2tpcHBpbmcuIHRhYmxlIGBwZW5ndWluc2AgYWxyZWFkeSBleGlzdHMgaW4gREJcIlxuIn0= -->
+<pre><code>[1] &quot;Skipping. table `penguins` already exists in DB&quot;</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
@@ -1907,7 +1942,7 @@ facets</code></pre>
 
 head(data_remote_raw)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImRhdGEuZnJhbWUiXSwibnJvdyI6NiwibmNvbCI6OCwic3VtbWFyeSI6eyJEZXNjcmlwdGlvbiI6WyJkZiBbNiDDlyA4XSJdfX0sInJkZiI6Ikg0c0lBQUFBQUFBQUJyVlRPMDdEUUJDZGZKd2ZKSUM0QTEwaWtWQlFHaEpSVWFFZ2hTcmEyT3ZFWXIyMmJDTStEUnlBQzBCSndRRkFOQlFJUkFzMUhJTVRKTXl1ZHdPWWxERFN5RHR2NTgzTUc5czduVjZyMHFzQVFBN3kyUXprRER5Q3NkdmRxcThESWhoa0lBOWw4VHpDcEdVOGxOQVgwUXZxb3JCaFUrYlNQNHArMWk1My9YQkl3NGp5L3dFQWFxS2IyVDUvUVhzMTI0OUNQNWlkRlVmWTZZZUlpbGZtNXQ0RjJxWFp2cGI0bE5lOGJRa3pWeVhzbUUxSmh5bXZ0WjNVWGJ1UWZBU3JVaDNBSGZvOSt2TlpRbmxDZi9pNnIxMmp2d1BNM3lUMzFST01OMVBieVh1RVRmZm4wQmtSaXAyZ3pjekpxd3pWc2ZnMjIzOThCQVluSG8zVUdDVUZGcU9BV2k3Q3Fvc2JNY0p0RmRVR0xtTjlSdmt3SHZVOVQ2RlZpZG8wK0E0dU9jd05BaHIreXA0YitQWngzeU5SMUI4cUtCZlJJNjNqbUpJd05XYzU5QThiZWxZaE1LdldYRWdMc2hpV1ZZSTBXTEZKVEJwT2lIeU14aWxLMFE5aTErZEl5b3Jmd1VpUk0yRUtXRGpnWWhLN2JvME8rSDY5SlJySTY4U3I2bG40ZGk0bExiTVRWY3JRcThYRnVGeS9RSU9SQVdWNno2aFlDbTRFb2N0anJRVFJxQkg3TWRGNUZjdG5HcEhhWVB3SnkybU0zUVVFQUFBPSJ9 -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImRhdGEuZnJhbWUiXSwibnJvdyI6NiwibmNvbCI6OCwic3VtbWFyeSI6eyJEZXNjcmlwdGlvbiI6WyJkZiBbNiDDlyA4XSJdfX0sInJkZiI6Ikg0c0lBQUFBQUFBQUJyVlR2VTdETUJDKy9xUS9nUllRNzhCR0pTZ0RZMmdySmlaVUpKZ3F0M0ZLaE9ORVNTcCtGbmdBWHFDTURIMEFFQXNEQXJIQ0RJL0JFd0JueHk1dDZBZ25uZXo3N2o3N3ZrdTgyOXF2bS9zbUFPUWduODFBenNBdEdIdnQ3ZFZOUUFTRERPU2hMTllUTEZyR1RRbDlFYjJnRW9VdG16S1gvbEUwZlhhNTdZZDlHa2FVL3c4QVVCVzNXYzNMRjdSWHEva285SVBWV25HRW5YK0lxSGh0TlE2R2FGZFdjeVR4TVcvOXRpN01XcE93WTYxTE9veDU5WjNrM0kyaDVDTllrZW9BN3REdjBaOHZFc29UK3NOUHZqcENmd2VZdjBueWxUT01HNm5wNUQzQ3h2Tno2SXdJeFg2aHphekpxd3AxWS9GdHRrLzlCQVluSG8xVUd5VUZGcU9BOWx5RTFTMXV4QWkzVlZUdHVveDFHT1g5K0xEamVRcXRTTlNtd1NTNDVEQTNDR2o0cTNxdTY5dW5IWTlFVWFldm9GeEVUN1NPVTByQ1ZKL2wwRCt1NlY2RndLd2FjeUV0cU1md1dDVklnNlpOWWxKelF1Umo5Sm1pRlAwZ2RuMk9wS3g0RGthS25BbFR3TUtBaTA3czFkN2hnQitKZHdXbVRDZGVVV3RoWWw5S3JzeCtxYU1NUFZvY2pNdjFCelFZNlZLbTU0eUtwZUJhRUxvODFrb1FqV3F4SHhOZFovWjhwaEdwRFQ2L0FUOFNmZFFGQkFBQSJ9 -->
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["species"],"name":[1],"type":["chr"],"align":["left"]},{"label":["island"],"name":[2],"type":["chr"],"align":["left"]},{"label":["bill_length_mm"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["bill_depth_mm"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["flipper_length_mm"],"name":[5],"type":["int"],"align":["right"]},{"label":["body_mass_g"],"name":[6],"type":["int"],"align":["right"]},{"label":["sex"],"name":[7],"type":["chr"],"align":["left"]},{"label":["year"],"name":[8],"type":["int"],"align":["right"]}],"data":[{"1":"Adelie","2":"Torgersen","3":"39.1","4":"18.7","5":"181","6":"3750","7":"male","8":"2007","_rn_":"1"},{"1":"Adelie","2":"Torgersen","3":"39.5","4":"17.4","5":"186","6":"3800","7":"female","8":"2007","_rn_":"2"},{"1":"Adelie","2":"Torgersen","3":"40.3","4":"18.0","5":"195","6":"3250","7":"female","8":"2007","_rn_":"3"},{"1":"Adelie","2":"Torgersen","3":"NA","4":"NA","5":"NA","6":"NA","7":"NA","8":"2007","_rn_":"4"},{"1":"Adelie","2":"Torgersen","3":"36.7","4":"19.3","5":"193","6":"3450","7":"female","8":"2007","_rn_":"5"},{"1":"Adelie","2":"Torgersen","3":"39.3","4":"20.6","5":"190","6":"3650","7":"male","8":"2007","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10],"total":[8]},"rows":{"min":[10],"max":[10],"total":[6]},"pages":{}}}
@@ -1951,7 +1986,7 @@ head(data_remote_raw)</code></pre>
 <!-- rnb-chunk-end -->
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBOb3RlYm9vayIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKLS0tCnRpdGxlOiAiUiBOb3RlYm9vayIKLS0tCgpgYGB7cn0KIyBpbnN0YWxsLnBhY2thZ2VzKCJwYWxtZXJwZW5ndWlucyIpCmxpYnJhcnkodGlkeXZlcnNlKQpgYGAKCiMgTG9hZCBQZW5ndWluIERhdGEgKExvY2FsIENvcHkpCgpgYGB7cn0KZGF0YV9sb2NhbF9yYXcgPC0gcGFsbWVycGVuZ3VpbnM6OnBlbmd1aW5zCmBgYAoKYGBge3J9CmhlYWQoZGF0YV9sb2NhbF9yYXcpCmBgYAoKIyBFeGFtcGxlIEFnZ2VyZ2F0aW9ucwoKIyMgU2ltcGxlIEdyb3VwIEJ5IC8gQ291bnQKCmBgYHtyfQpleGFtcGxlX3ZpZXdfc2ltcGxlIDwtIGRhdGFfbG9jYWxfcmF3ICU+JQogIGdyb3VwX2J5KGlzbGFuZCkgJT4lCiAgY291bnQoKQpgYGAKCiMjIEZhY2V0aW5nLCBhIGxpc3Qgb2YgR3JvdXAvQ291bnRzLCBTcGxpdCBieSBJc2xhbmQKCmBgYHtyfQpleGFtcGxlX3ZpZXdfZmFjZXRzIDwtIGRhdGFfbG9jYWxfcmF3ICU+JQogIGdyb3VwX2J5KGlzbGFuZCkgJT4lCiAgZ3JvdXBfbWFwKH5ncm91cF9ieSguLCBzcGVjaWVzKSAlPiUgIGNvdW50KCkpCgpmYWNldHMKYGBgCgojIENvbm5lY3QgdG8gREIKCmBgYHtyfQojIGNvbiA8LSBEQkk6OmRiQ29ubmVjdCgpCnNvdXJjZSgiUi8wMC1jb25uZWN0LXRvLWNvb2xpZnkuUiIpCmNvbiAjIDwtIHRoaXMgaXMgdGhlIGN1cnJlbnRseSBvcGVuIGNvbm5lY3Rpb24KYGBgCgojIyBHZXQgZXhpc3RpbmcgdGFibGUgbmFtZXMgZnJvbSBEQgoKYGBge3J9CihkYl90YWJsZXMgPC0gREJJOjpkYkxpc3RUYWJsZXMoY29uKSkKYGBgCgojIyBXcml0ZSBMb2NhbCBDb3B5IG9mIFBlbmd1bmlzIERhdGEgdG8gUmVtb3RlIERCCgo+ICEgb25seSBkbyBzbyBpZiB0YWJsZSBkb2VzIG5vdCBleGlzdCBpbiByZW1vdGUgREIgIQoKYGBge3J9CmlmICghInBlbmd1aW5zIiAlaW4lIGRiX3RhYmxlcykgewogIERCSTo6ZGJXcml0ZVRhYmxlKGNvbiwgbmFtZSA9ICJwZW5ndWlucyIsIHZhbHVlID0gZGF0YV9sb2NhbF9yYXcpCn0KYGBgCgojIyBSZWFkIHJlbW90ZSBQZW5ndWlucyBkYXRhIGZyb20gREIKCmBgYHtyfQpkYXRhX3JlbW90ZV9yYXcgPC0gREJJOjpkYlJlYWRUYWJsZShjb24sICJwZW5ndWlucyIpCgpoZWFkKGRhdGFfcmVtb3RlX3JhdykKYGBgCgojIyBDb21wYXJlIGxvY2FsIGFuZCByZW1vdGUgZGF0YSB3aXRoIGB3YWxkb2AKCmBgYHtyfQp3YWxkbzo6Y29tcGFyZShkYXRhX2xvY2FsX3JhdywgZGF0YV9yZW1vdGVfcmF3KQpgYGAKCiMgSW1wb3J0OiBEaXNjb25uZWN0IGZyb20gREIKCmBgYHtyfQpEQkk6OmRiRGlzY29ubmVjdChjb24pCmBgYAo=</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBOb3RlYm9vayIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKLS0tCnRpdGxlOiAiUiBOb3RlYm9vayIKLS0tCgpgYGB7cn0KIyBpbnN0YWxsLnBhY2thZ2VzKCJwYWxtZXJwZW5ndWlucyIpCmxpYnJhcnkodGlkeXZlcnNlKQpgYGAKCiMgTG9hZCBQZW5ndWluIERhdGEgKExvY2FsIENvcHkpCgpgYGB7cn0KZGF0YV9sb2NhbF9yYXcgPC0gcGFsbWVycGVuZ3VpbnM6OnBlbmd1aW5zCmBgYAoKYGBge3J9CmhlYWQoZGF0YV9sb2NhbF9yYXcpCmBgYAoKIyBFeGFtcGxlIEFnZ2VyZ2F0aW9ucwoKIyMgU2ltcGxlIEdyb3VwIEJ5IC8gQ291bnQKCmBgYHtyfQpleGFtcGxlX3ZpZXdfc2ltcGxlIDwtIGRhdGFfbG9jYWxfcmF3ICU+JQogIGdyb3VwX2J5KGlzbGFuZCkgJT4lCiAgY291bnQoKQpgYGAKCiMjIEZhY2V0aW5nLCBhIGxpc3Qgb2YgR3JvdXAvQ291bnRzLCBTcGxpdCBieSBJc2xhbmQKCmBgYHtyfQpleGFtcGxlX3ZpZXdfZmFjZXRzIDwtIGRhdGFfbG9jYWxfcmF3ICU+JQogIGdyb3VwX2J5KGlzbGFuZCkgJT4lCiAgZ3JvdXBfbWFwKH5ncm91cF9ieSguLCBzcGVjaWVzKSAlPiUgIGNvdW50KCkpCgpleGFtcGxlX3ZpZXdfZmFjZXRzCmBgYAoKIyBDb25uZWN0IHRvIERCCgpgYGB7cn0KIyBjb24gPC0gREJJOjpkYkNvbm5lY3QoKQpzb3VyY2UoIlIvMDAtY29ubmVjdC10by1jb29saWZ5LlIiKQpjb24gIyA8LSB0aGlzIGlzIHRoZSBjdXJyZW50bHkgb3BlbiBjb25uZWN0aW9uCmBgYAoKIyMgR2V0IGV4aXN0aW5nIHRhYmxlIG5hbWVzIGZyb20gREIKCmBgYHtyfQooZGJfdGFibGVzIDwtIERCSTo6ZGJMaXN0VGFibGVzKGNvbikpCmBgYAoKIyMgV3JpdGUgTG9jYWwgQ29weSBvZiBQZW5ndW5pcyBEYXRhIHRvIFJlbW90ZSBEQgoKPiAhIG9ubHkgZG8gc28gaWYgdGFibGUgZG9lcyBub3QgZXhpc3QgaW4gcmVtb3RlIERCICEKCmBgYHtyfQppZiAoISJwZW5ndWlucyIgJWluJSBkYl90YWJsZXMpIHsKICBwcmludCgiV3JpdGluZyB0YWJsZSBgcGVuZ3VpbnNgIHRvIERCIikKICBEQkk6OmRiV3JpdGVUYWJsZShjb24sIG5hbWUgPSAicGVuZ3VpbnMiLCB2YWx1ZSA9IGRhdGFfbG9jYWxfcmF3KQp9IGVsc2UgewogIHByaW50KCJTa2lwcGluZy4gdGFibGUgYHBlbmd1aW5zYCBhbHJlYWR5IGV4aXN0cyBpbiBEQiIpCn0KYGBgCgojIyBSZWFkIHJlbW90ZSBQZW5ndWlucyBkYXRhIGZyb20gREIKCmBgYHtyfQpkYXRhX3JlbW90ZV9yYXcgPC0gREJJOjpkYlJlYWRUYWJsZShjb24sICJwZW5ndWlucyIpCgpoZWFkKGRhdGFfcmVtb3RlX3JhdykKYGBgCgojIyBDb21wYXJlIGxvY2FsIGFuZCByZW1vdGUgZGF0YSB3aXRoIGB3YWxkb2AKCmBgYHtyfQp3YWxkbzo6Y29tcGFyZShkYXRhX2xvY2FsX3JhdywgZGF0YV9yZW1vdGVfcmF3KQpgYGAKCiMgSW1wb3J0OiBEaXNjb25uZWN0IGZyb20gREIKCmBgYHtyfQpEQkk6OmRiRGlzY29ubmVjdChjb24pCmBgYAo=</div>
 
 
 
