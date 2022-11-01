@@ -3,6 +3,8 @@
 .RData
 .Ruserdata
 .Renviron
+*.html
+*.nb.html
 
 data/raw
 data/preprocessed_gdpr
