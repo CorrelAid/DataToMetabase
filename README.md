@@ -11,55 +11,57 @@ Two appropaches are possible
 
 For both cases, we want to track created cards and dashboards in a file or spreadsheed (e.g. Google Sheets).
 
-# Setup
+## Setup
 
-## `renv`: Installing Packages
+### `renv`: Package / Dependency Management
 
-`renv` brings project-local R dependency management to our project.
-`renv` uses a lockfile (`renv.lock`) to capture the state of your
-library at some point in time. Based on `renv.lock`, RStudio should
-automatically recognize that it’s being needed, thereby downloading and
-installing the appropriate version of `renv` into the project library.
-After this has completed, you can then use `renv::restore()` to restore
-the project library locally on your machine. When new packages are used,
-`install.packages()` does not install packages globally, it does in an
-environment only used for our project. You can find this library in
-`renv/library` (but it should not be necessary to look at it). If `renv`
-fails, you will be presented something in the like of when you first
-start R after cloning the repo:
+- `renv` brings project-local R dependency management to our project.
+- `renv` uses a lockfile (`renv.lock`) to capture the state of your
+  library at some point in time.
+- Based on `renv.lock`, RStudio should automatically recognize that it’s being needed, thereby downloading and installing the appropriate version of `renv` into the project library.
+
+> VSCode users might need to manually run `renv::activate()`.  
+> In this Project, `languageserver` for VSCode is ignored by `renv`.
+
+After this has completed, you can then use `renv::restore()` to restore the project library locally on your machine.
+
+When new packages are used, `install.packages()` does not install packages globally, it does so in an environment only used for our project. You can find this library in `renv/library` (but it should not be necessary to look at it).
+
+If `renv` fails, you will be presented something in the like of when you first start R after cloning the repo:
 
     renv::restore()
     This project has not yet been activated. Activating this project will ensure the project library is used during restore. Please see ?renv::activate for more details. Would you like to activate this project before restore? [Y/n]:
 
-Follow along with `Y` and `renv::restore()` will do its work downloading
-and installing all dependencies. `renv` uses a local `.Rprofile` and
-`renv/activate.R` script to handle our project dependencies.
+Follow along with `Y` and `renv::restore()` will do its work downloading and installing all dependencies.
 
-### Adding a new package
+`renv` uses a local `.Rprofile` and `renv/activate.R` script to handle our project dependencies.
 
-If you need to add a new package, you can install it as usual
-(`install.packages` etc.). Then, to add your package to the `renv.lock`:
+#### Adding a new package
+
+You can always check the status of your local project state with `renv::status()`.
+
+If you need to add a new package, you can install it as usual (`install.packages` etc.).
+
+Then, to **add** your package to the `renv.lock`:
 
     renv::snapshot()
 
-and commit and push your `renv.lock`.
+This will add the package as a dependency to `renv.lock`. Now commit and push your `renv.lock`.
 
-Other team members can then run `renv::restore()` to install the added
-package(s) on their laptop.
+Other team members can then run `renv::restore()` to install the added package(s) on their laptop.
 
-## Access data
+> You might want to **notify** team members about package updates (e.g. in the commit message or via Slack)
 
-To access the data for this challenge, you first need to get
-secrets/passwords. Reach out to the project host or team lead.
+### Data Access
 
-To connect to the Coolify Postgres database, you need to store your
-credentials in the `.Renviron` file. We'll use a **project**-specific `.Renviron` file:
+To access the data for this challenge, you first need to get secrets/passwords. Reach out to the project host or team lead.
+
+To connect to the Coolify Postgres database, you need to store your credentials in the `.Renviron` file. We'll use a **project**-specific `.Renviron` file:
 
 - with `usethis::edit_r_environ(scope = "project")`
-- or copy template with `cp .Renviron.example .Renviron` and edit there
+- or copy the template with `cp .Renviron.example .Renviron` and edit it
 
-Copy the content from the decrypted secret link. It should look
-something like this:
+Copy the content from the decrypted secret link. It should look something like this:
 
     # logins for supabase
     COOLIFY_NAME='postgres'
@@ -69,34 +71,43 @@ something like this:
     COOLIFY_PASSWORD='your-supabase-pw'
     COOLIFY_DB='defaultdb'
 
-Restart your R session (Session -> Restart R Session or
-`.rs.restartR()`)
+Restart your R session (Session -> Restart R Session or `.rs.restartR()`)
 
 Read and run `R/00-connect-to-coolify.R` or explore in `00-db-connection-test.Rmd`
 
-### Description of relevant tables
+#### Description of relevant tables
 
 > TODO
 
 For now we'll be working with the `penguins` data set from the [`palmerpenguins`](https://allisonhorst.github.io/palmerpenguins/) R package.
 
-# Developer information
+## Developer Information
 
-## Definition of Done
+### Definition of Done (DoD)
 
-Default Definition of Done can be found
-[here](https://github.com/CorrelAid/definition-of-done). Adapt if
-needed.
+CorrelAid's default Definition of Done can be found [here](https://github.com/CorrelAid/definition-of-done). Adapt as needed.
 
-## Code styling
+### Code styling
 
-# How to operate this project?
+#### Linting
 
-\[the following can also be moved to the wiki if you decide to have
-one\]
+This project uses the [`lintr`](https://github.com/r-lib/lintr) package to enforce code style consistency and better / clean code practice.
 
-explain how the output(s) of this project can be handled/operated, for
-example:
+> It seems that `renv` is ignoring `lintr` so you might need to install it with `install.packages("lintr")`.
+
+Run the linter with `lintr::lint_dir()`
+
+> It is recommended to use the [styler](https://github.com/r-lib/styler) package as well.
+
+**VSCode** users need to install the [`languageserver`](https://github.com/REditorSupport/languageserver) R package and the [R extension](https://marketplace.visualstudio.com/items?itemName=REditorSupport.r) for VSCode.
+
+## How to operate this project?
+
+> TODO
+
+\[the following can also be moved to the wiki if you decide to have one\]
+
+explain how the output(s) of this project can be handled/operated, for example:
 
 - how to knit the report(s)
 - where to create/find the data visualizations
@@ -104,7 +115,7 @@ example:
 - what would need to be updated if someone wanted to re-run your
   analysis with different data
 
-# Limitations
+## Limitations
 
 be honest about the limitations of your project, e.g.:
 
