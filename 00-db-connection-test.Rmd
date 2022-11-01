@@ -46,7 +46,7 @@ example_view_facets
 
 ```{r}
 # con <- DBI::dbConnect()
-source("R/00-connect-to-coolify.R")
+source(here::here("R","00-connect-to-coolify.R"))
 con # <- this is the currently open connection
 ```
 
