@@ -521,16 +521,6 @@
         "vctrs"
       ]
     },
-    "here": {
-      "Package": "here",
-      "Version": "1.0.1",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "24b224366f9c2e7534d2344d10d59211",
-      "Requirements": [
-        "rprojroot"
-      ]
-    },
     "highr": {
       "Package": "highr",
       "Version": "0.9",
@@ -949,14 +939,6 @@
         "xfun",
         "yaml"
       ]
-    },
-    "rprojroot": {
-      "Package": "rprojroot",
-      "Version": "2.0.3",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "1de7ab598047a87bba48434ba35d497d",
-      "Requirements": []
     },
     "rstudioapi": {
       "Package": "rstudioapi",
