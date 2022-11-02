@@ -1,0 +1,17 @@
+# Auto detect text files and perform LF normalization
+* text=auto eol=lf
+
+# Source files
+# ============
+*.Rdata binary
+*.RData binary
+*.rda   binary
+*.rdb   binary
+*.rds   binary
+*.Rd    text
+*.Rdx   binary
+*.Qmd	  text
+*.Rmd	  text
+*.R  	  text
+*.Rproj text
+*.[Rr]md   linguist-detectable

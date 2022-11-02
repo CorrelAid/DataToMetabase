@@ -1,4 +1,4 @@
-COOLIFY_DB='<db-name>>'
+COOLIFY_DB='<db-name>'
 COOLIFY_HOST='<db-host-ip-or-url>' 
 COOLIFY_PORT='<db-port>'
 COOLIFY_USER='<db-user-name>'
