@@ -1,5 +1,6 @@
 library(glue)
 library(DBI)
+library(lintr)
 
 #' Authenticate to Metabase
 #'
@@ -81,12 +82,6 @@ mb_req_error_processor <- function(req) {
 #' @export
 metabase_fetch_question <- function(metabase_session, id, params = list()) {
   mb_verify_session(metabase_session)
-  data<-list(
-    "ignore_cache" = FALSE,
-    "parameters"   = params
-  )
-  dataAsJSON <- jsonlite::toJSON(data, auto_unbox=TRUE)
-
   query_url_part = paste0('/api/card/', id, '/query/json', "")
   req <- httr::POST(mb_url(metabase_session$base_url, query_url_part),
                     httr::add_headers(
@@ -96,8 +91,8 @@ metabase_fetch_question <- function(metabase_session, id, params = list()) {
   );
   mb_req_error_processor(req)
 
-  questionJSON <- httr::content(req,"text")
-  questionData <- jsonlite::fromJSON(questionJSON)
+  #' questionJSON <- httr::content(req,"text")
+  #' questionData <- jsonlite::fromJSON(questionJSON)
 }
 
 ## INTERNAL HELPER FUNCTIONS
@@ -143,8 +138,8 @@ metabase_fetch_item_info <- function(metabase_session,item, id, params = list())
   );
   mb_req_error_processor(req)
 
-  questionJSON <- httr::content(req,"text")
-  questionData <- jsonlite::fromJSON(questionJSON)
+  #' questionJSON <- httr::content(req,"text")
+  #' questionData <- jsonlite::fromJSON(questionJSON)
 }
 
 #' Fetch the data for a Metabase question.
@@ -178,8 +173,8 @@ metabase_create_collection <- function(metabase_session,collection_name, parent_
   );
   mb_req_error_processor(req)
 
-  questionJSON <- httr::content(req,"text")
-  questionData <- jsonlite::fromJSON(questionJSON)
+  #' questionJSON <- httr::content(req,"text")
+  #' questionData <- jsonlite::fromJSON(questionJSON)
 }
 
 
@@ -217,8 +212,8 @@ metabase_create_card <- function(metabase_session,name,database,query) {
   );
   mb_req_error_processor(req)
 
-  questionJSON <- httr::content(req,"text")
-  questionData <- jsonlite::fromJSON(questionJSON)
+  #' questionJSON <- httr::content(req,"text")
+  #' questionData <- jsonlite::fromJSON(questionJSON)
 }
 
 
