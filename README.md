@@ -4,23 +4,64 @@
 
 One of two Metabase-centric projects (see [Metabase-to-Google](https://github.com/CorrelAid/metabase-to-google)). This project will explore automated approaches to (pre-)curating a Metabase instance with Dashboards and queries through the [Metabase API](https://www.metabase.com/docs/latest/api-documentation).
 
-Two appropaches are possible
+Two approaches are possible
 
-- recommended: send GET/POST requests to the Metabase API to run queries remotely
-- (not recommended / warning): write directly into the Metabase DB where Metabase stores it's meta data
+-   recommended: send GET/POST requests to the Metabase API to run queries remotely
+-   (not recommended / warning): write directly into the Metabase DB where Metabase stores it's meta data
 
 For both cases, we want to track created cards and dashboards in a file or spreadsheed (e.g. Google Sheets).
 
 ## Setup
 
+### R installation
+
+Installation files for R for Windows, Linux and MacOS can be found on
+[CRAN](https://cran.r-project.org/). This includes both the current version
+as well as older versions.
+
+Linux binaries can also be found directly from [Posit](https://docs.rstudio.com/resources/install-r/) for a larger
+variety of linux distributions.
+
+### RStudio installation
+
+RStudio is on of the most commonly used IDEs for R and is highly recommended.
+RStudio Desktop can be downloaded as a GUI application from [Posit](https://posit.co/downloads/).
+
+Alternatively RStudio Server can be downloaded [here](https://posit.co/download/rstudio-server/).
+When starting such a server locally it provides essentially the same UI as RStudio Desktop as a
+WEBUI in a browser. Currently not all browsers seem to be supported.
+
+- Firefox ✔
+- Edge ❌
+
+It is recommended that WSL users use RStudio Server because RStudio Desktop does not integrate
+well with WSL. 
+
+#### RStudio Server hints
+
+Unfortunately there does not seem to be a dedicated RStudio Server documentation
+for the free version. It is possibly to use the [documentation for
+the pro version](https://docs.rstudio.com/ide/server-pro/), but not everything
+might apply. We therefore have a few hints to help to get started.
+
+1. `sudo rstudio-server verify-installation` helps to check whether everything
+  is installed properly and no dynamic dependencies (C header files) are missing. 
+
+2. `sudo rstudio-server start` starts the server
+
+3. `sudo rstudio-server stop` stops the server
+
+4. The default address for accessing the server is http://localhost:8787
+
+5. Login credentials are the linux users credentials
+
 ### `renv`: Package / Dependency Management
 
-- `renv` brings project-local R dependency management to our project.
-- `renv` uses a lockfile (`renv.lock`) to capture the state of your
-  library at some point in time.
-- Based on `renv.lock`, RStudio should automatically recognize that it’s being needed, thereby downloading and installing the appropriate version of `renv` into the project library.
+-   `renv` brings project-local R dependency management to our project.
+-   `renv` uses a lockfile (`renv.lock`) to capture the state of your library at some point in time.
+-   Based on `renv.lock`, RStudio should automatically recognize that it's being needed, thereby downloading and installing the appropriate version of `renv` into the project library.
 
-> VSCode users might need to manually run `renv::activate()`.  
+> VSCode users might need to manually run `renv::activate()`.\
 > In this Project, `languageserver` for VSCode is ignored by `renv`.
 
 After this has completed, you can then use `renv::restore()` to restore the project library locally on your machine.
@@ -58,8 +99,8 @@ To access the data for this challenge, you first need to get secrets/passwords. 
 
 To connect to the Coolify Postgres database, you need to store your credentials in the `.Renviron` file. We'll use a **project**-specific `.Renviron` file:
 
-- with `usethis::edit_r_environ(scope = "project")`
-- or copy the template with `cp .Renviron.example .Renviron` and edit it
+-   with `usethis::edit_r_environ(scope = "project")`
+-   or copy the template with `cp .Renviron.example .Renviron` and edit it
 
 Copy the content from the decrypted secret link. It should look something like this:
 
@@ -71,7 +112,7 @@ Copy the content from the decrypted secret link. It should look something like t
     COOLIFY_PASSWORD='your-supabase-pw'
     COOLIFY_DB='defaultdb'
 
-Restart your R session (Session -> Restart R Session or `.rs.restartR()`)
+Restart your R session (Session -\> Restart R Session or `.rs.restartR()`)
 
 Read and run `R/00-connect-to-coolify.R` or explore in `00-db-connection-test.Rmd`
 
@@ -105,22 +146,19 @@ Run the linter with `lintr::lint_dir()`
 
 > TODO
 
-\[the following can also be moved to the wiki if you decide to have one\]
+$$the following can also be moved to the wiki if you decide to have one$$
 
 explain how the output(s) of this project can be handled/operated, for example:
 
-- how to knit the report(s)
-- where to create/find the data visualizations
-- how to update data
-- what would need to be updated if someone wanted to re-run your
-  analysis with different data
+-   how to knit the report(s)
+-   where to create/find the data visualizations
+-   how to update data
+-   what would need to be updated if someone wanted to re-run your analysis with different data
 
 ## Limitations
 
 be honest about the limitations of your project, e.g.:
 
-- methodological: maybe another model would be more suitable?
-- reproducibility: what are limits of reproducibility? is there
-  something hard-coded/specific to the data that you used?
-- best practices: maybe some code is particularly messy and people
-  working on it in the future should know about it in advance?
+-   methodological: maybe another model would be more suitable?
+-   reproducibility: what are limits of reproducibility? is there something hard-coded/specific to the data that you used?
+-   best practices: maybe some code is particularly messy and people working on it in the future should know about it in advance?
