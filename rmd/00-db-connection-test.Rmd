@@ -32,7 +32,7 @@ example_view_simple <- data_local_raw %>%
 ```{r}
 example_view_facets <- data_local_raw %>%
   group_by(island) %>%
-  group_map(~group_by(., species) %>%  count())
+  group_map(~ group_by(., species) %>% count())
 
 example_view_facets
 ```
