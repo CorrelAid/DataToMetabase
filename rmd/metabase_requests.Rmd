@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ## Credentials
 
 In order to make sure that not sensitive information are included in code files
-we load then from the environment, where they where added by the `.Renviron`
+we load them from the environment, where they where added by the `.Renviron`
 file. In order to run this document you therefore need to define the
 environment variables `METABASE_USER`, `METABASE_PWD` and `METABASE_API_URL`.
 
@@ -35,8 +35,7 @@ In this document we'll use `httr` to make http requests. We won't import
 information please refer to the
 [httr documentation](https://httr.r-lib.org/index.html)
 
-In order to do
-anything interesting we'll first need to get a session token for metabase.
+In order to do anything interesting we'll first need to get a session token for metabase.
 The following snippet fetches a session token.
 
 ```{r session_token}
@@ -49,7 +48,7 @@ httr::message_for_status(response)
 session <- httr::content(response, as = "parsed")
 ```
 
-Not the usage of `message_for_status` which we use purely to illustrate the
+Note the usage of `message_for_status` which we use purely to illustrate the
 http status. In further applications the similar function `stop_for_status`
 is often useful as it will stop the program if there is an http issue.
 
@@ -123,13 +122,15 @@ query$database
 ```
 
 We only show a small part of the query for case 3 because the details are too
-long to dicsuss here. Nevertheless we notic three important things.
+long to discuss here. Nevertheless we noticed three important things.
 
 1. We don't seem to
 have access to card 16. But we actually get a proper error for this, due to
 the `stop_for_status_method`.
 2. There seems to be different types of queries. Here we saw "native" and
 "query".
+  - A native Query is a query written as text in the database’s query language (usually SQL).
+  - Query refers to the Query Builder, the graphical interface for asking questions.
 3. References to databases and tables are just numbers. That we'll need to map.
 
 ## Reference data
