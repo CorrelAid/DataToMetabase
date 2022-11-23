@@ -8,7 +8,7 @@
 #' @return Metabaser session
 #'
 #' @examples
-#' mb_session <- metabase_init(base_url, username)
+#' mb_session <- metabase_auth()
 #'
 #' @export
 metabase_auth <- function() {
