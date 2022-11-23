@@ -11,23 +11,23 @@
 #' mb_session <- metabase_init(base_url, username)
 #'
 #' @export
-metabase_auth <- function () {
+metabase_auth <- function() {
   creds <- list(
     username = Sys.getenv("METABASE_USER"),
     password = Sys.getenv("METABASE_PWD")
   )
   api_url <- Sys.getenv("METABASE_API_URL")
-  credsAsJSON <- jsonlite::toJSON(creds, auto_unbox=TRUE)
-  req <- httr::POST(paste0(api_url, '/api/session'),
+  creds_json <- jsonlite::toJSON(creds, auto_unbox = TRUE)
+  req <- httr::POST(paste0(api_url, "/api/session"),
                     httr::add_headers(
                       "Content-Type" = "application/json"
                     ),
-                    body = credsAsJSON
+                    body = creds_json
   )
 
   if (req$status_code >= 200 && req$status_code < 300) {
-    jsonAuthResponse <- httr::content(req, "text")
-    mb_session_token <- toString(jsonlite::fromJSON(jsonAuthResponse))
+    json_auth_response <- httr::content(req, "text")
+    mb_session_token <- toString(jsonlite::fromJSON(json_auth_response))
 
     # make sure session is legit
     mb_session <- list(
@@ -37,7 +37,7 @@ metabase_auth <- function () {
     print("Session is authenticated")
     return(mb_session)
   } else {
-    print(req$status_code("Session is not authenticated and the error code is: ",req$status_code))
+    print(req$status_code("Session is not authenticated and the error code is: ", req$status_code))
     return(NULL)
   }
 }
