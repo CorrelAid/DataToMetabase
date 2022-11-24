@@ -1,14 +1,14 @@
-#' Authenticate to Metabase
-#'
-#' Initialize an authenticated session with Metabase.
-#'
-#' @param base_url The base URL of your Metabase server
-#' @param username The username to log in as
-#'
-#' @return Metabaser session
-#'
-#' @examples
-#' mb_session <- metabase_auth()
+# ' Authenticate to Metabase
+# '
+# ' Initialize an authenticated session with Metabase.
+# '
+# ' @param base_url The base URL of your Metabase server
+# ' @param username The username to log in as
+# '
+# ' @return Metabaser session
+# '
+# ' @examples
+# ' mb_session <- metabase_auth()
 #'
 #' @export
 metabase_auth <- function() {
