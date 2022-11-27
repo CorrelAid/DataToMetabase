@@ -1,0 +1,37 @@
+---
+title: "Reference Class Client"
+output: html_document
+date: "2022-11-27"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Reference Class Client for Metabase 
+
+Reference classes (RC) allow the definition of objects that have an internal state
+that can be modified by methods. In the context of Metabase this allows us
+to write a client that encapsulates the session behavior of the API. This way
+users of the client do not have to deal with sessions directly.
+
+```{r import client}
+source('../R/ref-class-client.R')
+```
+
+A client can be instantiated from an RC. These classes also allow for more
+complex initialization which enables us to encapsulate loading environment
+variables. In order to create a valid client instance the following code
+requires the environment variables `METABASE_USER`, `METABASE_PWD` and
+`METABASE_URL`.
+
+```{r instanciate}
+mc <- MetabaseClient()
+```
+
+Given an instance, interaction with the API can begin immediately with all
+session necessities happening in the background.
+
+```{r get_databases}
+mc$get_databases()
+```
