@@ -1,3 +1,6 @@
 ^renv$
 ^renv\.lock$
 ^\.github$
+^DataToMetabase\.Rproj$
+^\.Rproj\.user$
+^LICENSE\.md$

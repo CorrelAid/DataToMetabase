@@ -1,4 +1,4 @@
-MetabaseClient <- setRefClass(  # nolint
+MetabaseClient <- setRefClass( # nolint
   "MetabaseClient",
   fields = list(
     user = "character",
