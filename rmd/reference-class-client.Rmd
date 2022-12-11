@@ -16,7 +16,7 @@ to write a client that encapsulates the session behavior of the API. This way
 users of the client do not have to deal with sessions directly.
 
 ```{r import client}
-source('../R/ref-class-client.R')
+devtools::load_all()
 ```
 
 A client can be instantiated from an RC. These classes also allow for more

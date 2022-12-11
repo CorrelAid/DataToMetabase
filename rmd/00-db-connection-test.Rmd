@@ -40,9 +40,25 @@ example_view_facets
 ## Connect to DB
 
 ```{r}
-# con <- DBI::dbConnect()
-source(here::here("R", "00-connect-to-coolify.R"))
-con # <- this is the currently open connection
+library(DBI)
+library(RPostgres)
+library(readr)
+
+db_name <- Sys.getenv("COOLIFY_DB")
+db_host <- Sys.getenv("COOLIFY_HOST")
+db_port <- Sys.getenv("COOLIFY_PORT")
+db_user <- Sys.getenv("COOLIFY_USER")
+db_password <- Sys.getenv("COOLIFY_PASSWORD")
+
+# create connection
+con <- DBI::dbConnect(
+  drv = RPostgres::Postgres(),
+  host = db_host,
+  port = db_port,
+  dbname = db_name,
+  user = db_user,
+  password = db_password
+)
 ```
 
 ### Get existing table names from DB

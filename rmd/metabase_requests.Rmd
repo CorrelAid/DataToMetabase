@@ -152,7 +152,7 @@ database. At this point we will also be using some tidyverse functionality to
 more conveniently handle the tabular data.
 
 ```{r,include=FALSE}
-library(tidyverse)
+library(dplyr)
 ```
 
 ```{r schema}
