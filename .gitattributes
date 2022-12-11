@@ -15,3 +15,5 @@
 *.R  	  text
 *.Rproj text
 *.[Rr]md   linguist-detectable
+* text=auto
+tests/fixtures/**/* -diff
