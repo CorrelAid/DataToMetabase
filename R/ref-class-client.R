@@ -87,3 +87,34 @@ MetabaseClient$methods(
     )
   }
 )
+
+MetabaseClient$methods(
+  get_collections = function() {
+    collections <- .self$authenticated_get("/collection/")
+    do.call(
+      dplyr::bind_rows,
+      lapply(collections, function(data) {
+        list(id = data$id, location = data$location, name = data$name)
+      })
+    )
+  }
+)
+
+MetabaseClient$methods(
+  get_items = function(collection_id) {
+    items <- .self$authenticated_get(paste0("/collection/", collection_id, "/items"))
+    do.call(
+      dplyr::bind_rows,
+      lapply(items$data, function(item) {
+        list(id = item$id, model = item$model, name = item$name)
+      })
+    )
+  }
+)
+
+MetabaseClient$methods(
+  get_card = function(card_id) {
+    card <- .self$authenticated_get(paste0("/card/", card_id))
+    card
+  }
+)
