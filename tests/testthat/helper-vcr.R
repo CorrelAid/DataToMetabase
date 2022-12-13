@@ -5,7 +5,10 @@ invisible(vcr::vcr_configure(
   filter_sensitive_data_regex = list(
     `"username":"<sanitized>"` = '"username":"[^"]*"',
     `"password":"<sanitized>"` = '"password":"[^"]*"',
-    `{"id":"<sanitized>"}` = '\\{"id":"[^"]*"\\}'
+    `{"id":"<sanitized>"}` = '\\{"id":"[^"]*"\\}',
+    `"first_name":"<sanitized>"` = '"first_name":"[^"]*"',
+    `"last_name":"<sanitized>"` = '"last_name":"[^"]*"',
+    `"email":"<sanitized>"` = '"email":"[^"]*"'
   )
 ))
 vcr::check_cassette_names()

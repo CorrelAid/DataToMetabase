@@ -1,0 +1,101 @@
+http_interactions:
+- request:
+    method: post
+    uri: https://metabase.citizensforeurope.org/api/session
+    body:
+      encoding: ''
+      string: '{"username":"<sanitized>","password":"<sanitized>"}'
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+      Content-Type: application/json
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      cache-control: max-age=0, no-cache, must-revalidate, proxy-revalidate
+      connection: keep-alive
+      content-encoding: gzip
+      content-security-policy: default-src 'none'; script-src 'self' 'unsafe-eval'
+        https://maps.google.com https://accounts.google.com    'sha256-K2AkR/jTLsGV8PyzWha7/ey1iaD9c5jWRYwa++ZlMZc='
+        'sha256-ib2/2v5zC6gGM6Ety7iYgBUvpy/caRX9xV/pzzV7hf0=' 'sha256-isH538cVBUY8IMlGYGbWtBwr+cGqkc4mN6nLcA7lUjE=';
+        child-src 'self' https://accounts.google.com; style-src 'self' 'unsafe-inline'
+        https://accounts.google.com; font-src *; img-src * 'self' data:; connect-src
+        'self' https://accounts.google.com metabase.us10.list-manage.com   ; manifest-src
+        'self';  frame-ancestors 'none';
+      content-type: application/json;charset=utf-8
+      date: Tue, 13 Dec 2022 17:15:52 GMT
+      expires: Tue, 03 Jul 2001 06:00:00 GMT
+      last-modified: Tue, 13 Dec 2022 17:15:52 GMT
+      server: nginx
+      set-cookie:
+      - metabase.TIMEOUT=alive;SameSite=Lax;Path=/;Secure
+      - metabase.SESSION=3a5562bf-e743-4922-bf87-9bd21eae73be;SameSite=Lax;Path=/;Secure;HttpOnly
+      strict-transport-security: max-age=31536000
+      transfer-encoding: chunked
+      x-content-type-options: nosniff
+      x-frame-options: DENY
+      x-permitted-cross-domain-policies: none
+      x-xss-protection: 1; mode=block
+    body:
+      encoding: ''
+      file: no
+      string: '{"id":"<sanitized>"}'
+  recorded_at: 2022-12-13 17:15:54 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2
+- request:
+    method: get
+    uri: https://metabase.citizensforeurope.org/api/collection/12/items
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+      X-Metabase-Session: <sanitized>
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      cache-control: max-age=0, no-cache, must-revalidate, proxy-revalidate
+      connection: keep-alive
+      content-encoding: gzip
+      content-security-policy: default-src 'none'; script-src 'self' 'unsafe-eval'
+        https://maps.google.com https://accounts.google.com    'sha256-K2AkR/jTLsGV8PyzWha7/ey1iaD9c5jWRYwa++ZlMZc='
+        'sha256-ib2/2v5zC6gGM6Ety7iYgBUvpy/caRX9xV/pzzV7hf0=' 'sha256-isH538cVBUY8IMlGYGbWtBwr+cGqkc4mN6nLcA7lUjE=';
+        child-src 'self' https://accounts.google.com; style-src 'self' 'unsafe-inline'
+        https://accounts.google.com; font-src *; img-src * 'self' data:; connect-src
+        'self' https://accounts.google.com metabase.us10.list-manage.com   ; manifest-src
+        'self';  frame-ancestors 'none';
+      content-type: application/json;charset=utf-8
+      date: Tue, 13 Dec 2022 17:15:52 GMT
+      expires: Tue, 03 Jul 2001 06:00:00 GMT
+      last-modified: Tue, 13 Dec 2022 17:15:52 GMT
+      server: nginx
+      set-cookie:
+      - metabase.TIMEOUT=alive;SameSite=Lax;Path=/;Secure
+      - metabase.SESSION=3a5562bf-e743-4922-bf87-9bd21eae73be;SameSite=Lax;Path=/;Secure;HttpOnly
+      strict-transport-security: max-age=31536000
+      transfer-encoding: chunked
+      x-content-type-options: nosniff
+      x-frame-options: DENY
+      x-permitted-cross-domain-policies: none
+      x-xss-protection: 1; mode=block
+    body:
+      encoding: ''
+      file: no
+      string: '{"total":7,"data":[{"description":null,"collection_position":null,"name":"Birds
+        - Manual Exploration","id":16,"entity_id":"SDMmtRn6pQeI8WWQV7mXI","last-edit-info":{"id":7,"last_name":"<sanitized>","first_name":"<sanitized>","email":"<sanitized>","timestamp":"2022-10-25T10:05:15.796659Z"},"model":"dashboard"},{"description":null,"collection_position":null,"name":"hello
+        world","id":17,"entity_id":"pd8x8_QL4FIRCpH9T3kB5","last-edit-info":{"id":10,"last_name":"<sanitized>","first_name":"<sanitized>","email":"<sanitized>","timestamp":"2022-10-30T09:20:05.807998Z"},"model":"dashboard"},{"description":null,"collection_position":null,"name":"Islands  -
+        Manual Exploration","id":15,"entity_id":"DTlq0nM9eYIDBBdwLEOVz","last-edit-info":{"id":7,"last_name":"<sanitized>","first_name":"<sanitized>","email":"<sanitized>","timestamp":"2022-10-25T19:40:51.705299Z"},"model":"dashboard"},{"description":null,"collection_position":null,"name":"Penguins,
+        Count, Standard deviation of ,Bill Length Mm, and Standard deviation of Bill
+        Depth Mm, Grouped by Species","moderated_status":null,"fully_parametrized":true,"id":98,"display":"bar","entity_id":"SbB74f7s9mP5z-LdvopNY","collection_preview":true,"last-edit-info":{"id":10,"last_name":"<sanitized>","first_name":"<sanitized>","email":"<sanitized>","timestamp":"2022-10-30T09:19:35.793103Z"},"model":"card"},{"description":null,"collection_position":null,"name":"q1
+        line chart","moderated_status":null,"fully_parametrized":true,"id":57,"display":"line","entity_id":"A0txynDJukNIAx-jg6MdS","collection_preview":true,"last-edit-info":{"id":5,"last_name":"<sanitized>","first_name":"<sanitized>","email":"<sanitized>","timestamp":"2022-10-19T18:44:12.668823Z"},"model":"card"},{"authority_level":null,"description":null,"can_write":true,"name":"Reference
+        Queries","id":32,"entity_id":"Syin1ry0RiSzp66CHr4wZ","model":"collection"},{"description":null,"collection_position":null,"name":"Stage
+        0 - Manual Exploration","id":8,"entity_id":"_5gFOfkWX6K0Ac3EE7-AH","last-edit-info":{"id":5,"last_name":"<sanitized>","first_name":"<sanitized>","email":"<sanitized>","timestamp":"2022-10-19T19:38:58.407201Z"},"model":"dashboard"}],"models":["card","collection","dashboard","dataset","pulse","timeline"],"limit":null,"offset":null}'
+  recorded_at: 2022-12-13 17:15:54 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2

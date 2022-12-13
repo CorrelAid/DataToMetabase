@@ -1,0 +1,100 @@
+http_interactions:
+- request:
+    method: post
+    uri: https://metabase.citizensforeurope.org/api/session
+    body:
+      encoding: ''
+      string: '{"username":"<sanitized>","password":"<sanitized>"}'
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+      Content-Type: application/json
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      cache-control: max-age=0, no-cache, must-revalidate, proxy-revalidate
+      connection: keep-alive
+      content-encoding: gzip
+      content-security-policy: default-src 'none'; script-src 'self' 'unsafe-eval'
+        https://maps.google.com https://accounts.google.com    'sha256-K2AkR/jTLsGV8PyzWha7/ey1iaD9c5jWRYwa++ZlMZc='
+        'sha256-ib2/2v5zC6gGM6Ety7iYgBUvpy/caRX9xV/pzzV7hf0=' 'sha256-isH538cVBUY8IMlGYGbWtBwr+cGqkc4mN6nLcA7lUjE=';
+        child-src 'self' https://accounts.google.com; style-src 'self' 'unsafe-inline'
+        https://accounts.google.com; font-src *; img-src * 'self' data:; connect-src
+        'self' https://accounts.google.com metabase.us10.list-manage.com   ; manifest-src
+        'self';  frame-ancestors 'none';
+      content-type: application/json;charset=utf-8
+      date: Tue, 13 Dec 2022 16:38:13 GMT
+      expires: Tue, 03 Jul 2001 06:00:00 GMT
+      last-modified: Tue, 13 Dec 2022 16:38:13 GMT
+      server: nginx
+      set-cookie:
+      - metabase.TIMEOUT=alive;SameSite=Lax;Path=/;Secure
+      - metabase.SESSION=5a50debe-9237-4868-b398-39f13a4242da;SameSite=Lax;Path=/;Secure;HttpOnly
+      strict-transport-security: max-age=31536000
+      transfer-encoding: chunked
+      x-content-type-options: nosniff
+      x-frame-options: DENY
+      x-permitted-cross-domain-policies: none
+      x-xss-protection: 1; mode=block
+    body:
+      encoding: ''
+      file: no
+      string: '{"id":"<sanitized>"}'
+  recorded_at: 2022-12-13 16:38:15 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2
+- request:
+    method: get
+    uri: https://metabase.citizensforeurope.org/api/collection/
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+      X-Metabase-Session: <sanitized>
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      cache-control: max-age=0, no-cache, must-revalidate, proxy-revalidate
+      connection: keep-alive
+      content-encoding: gzip
+      content-security-policy: default-src 'none'; script-src 'self' 'unsafe-eval'
+        https://maps.google.com https://accounts.google.com    'sha256-K2AkR/jTLsGV8PyzWha7/ey1iaD9c5jWRYwa++ZlMZc='
+        'sha256-ib2/2v5zC6gGM6Ety7iYgBUvpy/caRX9xV/pzzV7hf0=' 'sha256-isH538cVBUY8IMlGYGbWtBwr+cGqkc4mN6nLcA7lUjE=';
+        child-src 'self' https://accounts.google.com; style-src 'self' 'unsafe-inline'
+        https://accounts.google.com; font-src *; img-src * 'self' data:; connect-src
+        'self' https://accounts.google.com metabase.us10.list-manage.com   ; manifest-src
+        'self';  frame-ancestors 'none';
+      content-type: application/json;charset=utf-8
+      date: Tue, 13 Dec 2022 16:38:13 GMT
+      expires: Tue, 03 Jul 2001 06:00:00 GMT
+      last-modified: Tue, 13 Dec 2022 16:38:13 GMT
+      server: nginx
+      set-cookie:
+      - metabase.TIMEOUT=alive;SameSite=Lax;Path=/;Secure
+      - metabase.SESSION=5a50debe-9237-4868-b398-39f13a4242da;SameSite=Lax;Path=/;Secure;HttpOnly
+      strict-transport-security: max-age=31536000
+      transfer-encoding: chunked
+      x-content-type-options: nosniff
+      x-frame-options: DENY
+      x-permitted-cross-domain-policies: none
+      x-xss-protection: 1; mode=block
+    body:
+      encoding: ''
+      file: no
+      string: '[{"authority_level":null,"description":null,"archived":false,"slug":"correlaid___hackathon","color":"#509EE3","can_write":false,"name":"CorrelAid
+        - Hackathon","personal_owner_id":null,"id":7,"entity_id":null,"location":"/","namespace":null},{"authority_level":null,"description":null,"archived":false,"slug":"correlaid___project_stage","color":"#509EE3","can_write":true,"name":"CorrelAid
+        - Project Stage","personal_owner_id":null,"id":10,"entity_id":"AwtF7m0_x3t2B5jgWf3BV","location":"/","namespace":null},{"authority_level":null,"description":null,"archived":false,"slug":"demo_m_api","color":"#509EE3","can_write":true,"name":"demo_m_api","personal_owner_id":null,"id":21,"entity_id":"XFUFwxnNntG7jWmH8_aMi","location":"/10/","namespace":null},{"authority_level":null,"description":null,"archived":false,"slug":"konrad_w__s_personal_collection","color":"#31698A","can_write":true,"name":"Konrad
+        W.''s Personal Collection","personal_owner_id":12,"id":17,"entity_id":"F0k5lQFHFC01PBfZ8Yf5W","location":"/","namespace":null},{"authority_level":null,"description":null,"archived":false,"slug":"nested_collection","color":"#509EE3","can_write":true,"name":"nested_collection","personal_owner_id":null,"id":24,"entity_id":"YFC9pRS8rLNcWikN-eSQ8","location":"/10/21/","namespace":null},{"authority_level":null,"description":null,"archived":false,"slug":"nested_collection","color":"#509EE3","can_write":true,"name":"nested_collection","personal_owner_id":null,"id":25,"entity_id":"DpMUX_b0gePJ9pPeofhiV","location":"/10/21/","namespace":null},{"authority_level":null,"description":null,"archived":false,"slug":"nested_collection","color":"#509EE3","can_write":true,"name":"nested_collection","personal_owner_id":null,"id":27,"entity_id":"HHFiAuAOzVadU4AWsDxRu","location":"/10/21/","namespace":null},{"authority_level":null,"description":null,"archived":false,"slug":"nested_collection","color":"#509EE3","can_write":true,"name":"nested_collection","personal_owner_id":null,"id":29,"entity_id":"Pko__dp_ECNTY1zbMfz8I","location":"/10/21/","namespace":null},{"authority_level":null,"description":null,"archived":false,"slug":"nested_collection","color":"#509EE3","can_write":true,"name":"nested_collection","personal_owner_id":null,"id":30,"entity_id":"7zxwn8eWB2kKAfaWWQJZL","location":"/10/21/","namespace":null},{"authority_level":null,"description":null,"archived":false,"slug":"playground___automated_curation","color":"#509EE3","can_write":true,"name":"Playground
+        - Automated Curation","personal_owner_id":null,"id":11,"entity_id":"7qhXKPW4GTe6_P4lk_LIv","location":"/10/","namespace":null},{"authority_level":null,"description":null,"archived":false,"slug":"playground___cards_for_export","color":"#509EE3","can_write":true,"name":"Playground
+        - Cards for Export","personal_owner_id":null,"id":13,"entity_id":"uuHkGKlCzXuS2mojYl3YK","location":"/10/","namespace":null},{"authority_level":null,"description":null,"archived":false,"slug":"playground___manual_exploration","color":"#509EE3","can_write":true,"name":"Playground
+        - Manual Exploration","personal_owner_id":null,"id":12,"entity_id":"wQt7XsqYTLXXiiKJAgq95","location":"/10/","namespace":null},{"authority_level":null,"description":null,"archived":false,"slug":"reference_queries","color":"#509EE3","can_write":true,"name":"Reference
+        Queries","personal_owner_id":null,"id":32,"entity_id":"Syin1ry0RiSzp66CHr4wZ","location":"/10/12/","namespace":null},{"authority_level":null,"description":null,"archived":false,"slug":"test1","color":"#509EE3","can_write":true,"name":"test1","personal_owner_id":null,"id":31,"entity_id":"Y9ELdgd4Waj18rkM4nAri","location":"/17/","namespace":null}]'
+  recorded_at: 2022-12-13 16:38:15 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2

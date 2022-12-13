@@ -5,6 +5,7 @@
 .Renviron
 *.html
 *.nb.html
+..Rcheck
 
 data/raw
 data/preprocessed_gdpr
