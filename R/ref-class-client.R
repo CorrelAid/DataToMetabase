@@ -118,7 +118,17 @@ MetabaseClient$methods(
     card
   }
 )
-
+MetabaseClient$methods(
+  get_tables = function() {
+    collections <- .self$authenticated_get("/table/")
+    do.call(
+      dplyr::bind_rows,
+      lapply(collections, function(data) {
+        list(id = data$id, location = data$location, name = data$name)
+      })
+    )
+  }
+)
 MetabaseClient$methods(
   create_collection = function(collection_name,parent_collection_id ) {
     if (.self$session == "") {
