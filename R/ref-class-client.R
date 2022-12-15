@@ -118,6 +118,7 @@ MetabaseClient$methods(
     card
   }
 )
+<<<<<<< HEAD
 MetabaseClient$methods(
   get_tables = function() {
     tables <- .self$authenticated_get("/table/")
@@ -159,3 +160,5 @@ MetabaseClient$methods(
     httr::content(response, as = "parsed")
   }
 )
+=======
+>>>>>>> parent of 204e2c4 (added create collection)
