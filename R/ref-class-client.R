@@ -120,11 +120,24 @@ MetabaseClient$methods(
 )
 MetabaseClient$methods(
   get_tables = function() {
-    collections <- .self$authenticated_get("/table/")
+    tables <- .self$authenticated_get("/table/")
+    print(tables)
     do.call(
       dplyr::bind_rows,
-      lapply(collections, function(data) {
-        list(id = data$id, location = data$location, name = data$name)
+      lapply(tables, function(data) {
+        list(id = data$id, location = data$location, name = data$name, db_name = data$db$name)
+      })
+    )
+  }
+)
+MetabaseClient$methods(
+  get_table_items = function(table_id) {
+    items <- .self$authenticated_get(paste0("/table/", table_id))
+    print(items)
+    do.call(
+      dplyr::bind_rows,
+      lapply(items, function(item) {
+        list(db_id = items$id, name = items$name)
       })
     )
   }
@@ -132,7 +145,7 @@ MetabaseClient$methods(
 MetabaseClient$methods(
   create_collection = function(collection_name,parent_collection_id ) {
     if (.self$session == "") {
-      .self$authenticate()
+      .self$authenticated_post()
     }
     params <- list( "name"=collection_name,'parent_id'=parent_collection_id, 'color'='#509EE3')
     response <- httr::POST(
