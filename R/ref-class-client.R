@@ -35,10 +35,10 @@ MetabaseClient$methods(
 MetabaseClient$methods(
   authenticate = function() {
     response <- httr::POST(paste0(.self$metabase_url, .self$api_uri_prefix, "/session"),
-      body = list(username = .self$user, password = .self$password),
-      encode = "json"
+                           body = list(username = .self$user, password = .self$password),
+                           encode = "json"
     )
-
+    
     httr::stop_for_status(response)
     session <<- httr::content(response, as = "parsed")$id
   }
@@ -49,7 +49,7 @@ MetabaseClient$methods(
     if (.self$session == "") {
       .self$authenticate()
     }
-
+    
     response <- httr::GET(
       paste0(.self$metabase_url, .self$api_uri_prefix, endpoint),
       httr::add_headers("X-Metabase-Session" = .self$session)
@@ -118,44 +118,15 @@ MetabaseClient$methods(
     card
   }
 )
+
 MetabaseClient$methods(
   get_tables = function() {
     tables <- .self$authenticated_get("/table/")
-    print(tables)
     do.call(
       dplyr::bind_rows,
       lapply(tables, function(data) {
-        list(id = data$id, location = data$location, name = data$name, db_name = data$db$name)
+        list(id = data$id, db_id = data$db_id, name = data$name, db_name = data$db$name)
       })
     )
-  }
-)
-MetabaseClient$methods(
-  get_table_items = function(table_id) {
-    items <- .self$authenticated_get(paste0("/table/", table_id))
-    print(items)
-    do.call(
-      dplyr::bind_rows,
-      lapply(items, function(item) {
-        list(db_id = items$id, name = items$name)
-      })
-    )
-  }
-)
-MetabaseClient$methods(
-  create_collection = function(collection_name,parent_collection_id ) {
-    if (.self$session == "") {
-      .self$authenticated_post()
-    }
-    params <- list( "name"=collection_name,'parent_id'=parent_collection_id, 'color'='#509EE3')
-    response <- httr::POST(
-      paste0(.self$metabase_url, .self$api_uri_prefix, "/collection/"),
-      body = jsonlite::toJSON(list(params), auto_unbox = TRUE),
-      encode = "json",
-      httr::content_type_json(),
-      httr::add_headers("X-Metabase-Session" = .self$session)
-    )
-    httr::stop_for_status(response)
-    httr::content(response, as = "parsed")
   }
 )
