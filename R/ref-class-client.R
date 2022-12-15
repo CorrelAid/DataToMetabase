@@ -120,6 +120,7 @@ MetabaseClient$methods(
 )
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 MetabaseClient$methods(
   get_tables = function() {
     tables <- .self$authenticated_get("/table/")
@@ -132,6 +133,9 @@ MetabaseClient$methods(
     )
   }
 )
+=======
+
+>>>>>>> parent of dd7345e (added get tables functionality)
 MetabaseClient$methods(
   get_table_items = function(table_id) {
     items <- .self$authenticated_get(paste0("/table/", table_id))
