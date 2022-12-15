@@ -126,3 +126,14 @@ MetabaseClient$methods(
   }
 )
 
+MetabaseClient$methods(
+  get_tables = function() {
+    tables <- .self$authenticated_get("/table/")
+    do.call(
+      dplyr::bind_rows,
+      lapply(tables, function(data) {
+        list(id = data$id, db_id = data$db_id, name = data$name, db_name = data$db$name)
+      })
+    )
+  }
+)
