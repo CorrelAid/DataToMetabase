@@ -120,19 +120,20 @@ MetabaseClient$methods(
 )
 
 MetabaseClient$methods(
-  create_collection = function(collection_name,parent_collection_id ) {
-    if (.self$session == "") {
-      .self$authenticate()
-    }
-    params <- list( "name"=collection_name,'parent_id'=parent_collection_id, 'color'='#509EE3')
-    response <- httr::POST(
-      paste0(.self$metabase_url, .self$api_uri_prefix, "/collection/"),
-      body = jsonlite::toJSON(list(params), auto_unbox = TRUE),
-      encode = "json",
-      httr::content_type_json(),
-      httr::add_headers("X-Metabase-Session" = .self$session)
+  get_tables = function() {
+    tables <- .self$authenticated_get("/table/")
+    do.call(
+      dplyr::bind_rows,
+      lapply(tables, function(data) {
+        list(id = data$id, db_id = data$db_id, name = data$name, db_name = data$db$name)
+      })
     )
-    httr::stop_for_status(response)
-    httr::content(response, as = "parsed")
+  }
+)
+
+MetabaseClient$methods(
+  create_collection = function(collection_name,parent_collection_id ) {
+    params <- list( "name"=collection_name,'parent_id'=parent_collection_id, 'color'='#509EE3')
+    authenticated_post (endpoint = "/collection/", payload = params)
   }
 )
