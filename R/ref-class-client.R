@@ -120,6 +120,13 @@ MetabaseClient$methods(
 )
 
 MetabaseClient$methods(
+  create_collection = function(collection_name,parent_collection_id ) {
+    params <- list( "name"=collection_name,'parent_id'=parent_collection_id, 'color'='#509EE3')
+    authenticated_post (endpoint = "/collection/", payload = params)
+  }
+)
+
+MetabaseClient$methods(
   get_tables = function() {
     tables <- .self$authenticated_get("/table/")
     do.call(
@@ -128,12 +135,5 @@ MetabaseClient$methods(
         list(id = data$id, db_id = data$db_id, name = data$name, db_name = data$db$name)
       })
     )
-  }
-)
-
-MetabaseClient$methods(
-  create_collection = function(collection_name,parent_collection_id ) {
-    params <- list( "name"=collection_name,'parent_id'=parent_collection_id, 'color'='#509EE3')
-    authenticated_post (endpoint = "/collection/", payload = params)
   }
 )
