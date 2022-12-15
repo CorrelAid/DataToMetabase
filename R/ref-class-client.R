@@ -125,3 +125,4 @@ MetabaseClient$methods(
     authenticated_post (endpoint = "/collection/", payload = params)
   }
 )
+

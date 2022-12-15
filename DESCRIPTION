@@ -3,6 +3,7 @@ Title: Programatic Metabase Query Creation
 Version: 0.0.0.9000
 Authors@R: 
     person("Konrad", "Woelms", email= "konrad.woelms@gmail.com", role = c("aut","cre"))
+    person("Tuhin", "Mallick", email= "tuhin.mllk@gmail.com", role = c("aut","cre"))
 Description: Tools to configure the systematic creation of many Metabase Queries. 
 License: MIT + file LICENSE
 Encoding: UTF-8
