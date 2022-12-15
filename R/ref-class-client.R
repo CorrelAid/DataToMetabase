@@ -132,7 +132,7 @@ MetabaseClient$methods(
     do.call(
       dplyr::bind_rows,
       lapply(tables, function(data) {
-        list(id = data$id, db_id = data$db_id, name = data$name, db_name = data$db$name)
+        list(table_id = data$id, table_name = data$name, db_id = data$db_id, db_name = data$db$name)
       })
     )
   }
