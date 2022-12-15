@@ -118,3 +118,11 @@ MetabaseClient$methods(
     card
   }
 )
+
+MetabaseClient$methods(
+  create_collection = function(collection_name,parent_collection_id ) {
+    params <- list( "name"=collection_name,'parent_id'=parent_collection_id, 'color'='#509EE3')
+    authenticated_post (endpoint = "/collection/", payload = params)
+  }
+)
+
