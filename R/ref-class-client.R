@@ -125,14 +125,6 @@ MetabaseClient$methods(
       .self$authenticate()
     }
     params <- list( "name"=collection_name,'parent_id'=parent_collection_id, 'color'='#509EE3')
-    response <- httr::POST(
-      paste0(.self$metabase_url, .self$api_uri_prefix, "/collection/"),
-      body = jsonlite::toJSON(list(params), auto_unbox = TRUE),
-      encode = "json",
-      httr::content_type_json(),
-      httr::add_headers("X-Metabase-Session" = .self$session)
-    )
-    httr::stop_for_status(response)
-    httr::content(response, as = "parsed")
+    authenticated_post (endpoint = "/collection/", payload = params)
   }
 )
