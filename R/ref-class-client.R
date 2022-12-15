@@ -119,6 +119,7 @@ MetabaseClient$methods(
   }
 )
 <<<<<<< HEAD
+<<<<<<< HEAD
 MetabaseClient$methods(
   get_tables = function() {
     tables <- .self$authenticated_get("/table/")
@@ -143,6 +144,9 @@ MetabaseClient$methods(
     )
   }
 )
+=======
+
+>>>>>>> parent of dd7345e (added get tables functionality)
 MetabaseClient$methods(
   create_collection = function(collection_name,parent_collection_id ) {
     if (.self$session == "") {
