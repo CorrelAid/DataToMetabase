@@ -137,3 +137,15 @@ MetabaseClient$methods(
     )
   }
 )
+MetabaseClient$methods(
+  get_dashboards = function() {
+    dashboards <- .self$authenticated_get("/dashboard/")
+    print(dashboards)
+    do.call(
+      dplyr::bind_rows,
+      lapply(dashboards, function(data) {
+        list(dashboard_id = data$id, dashboard_name = data$name, collection_id = data$collection_id)
+      })
+    )
+  }
+)
