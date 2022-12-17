@@ -1,3 +1,17 @@
+validate_env_var <- function(env_var_name, assignment_name) {
+  value <- Sys.getenv(env_var_name)
+  if (value == "") {
+    stop(paste0(
+      "Either the MetabaseClient parameter '",
+      assignment_name,
+      "' has to be set or the env variable '",
+      env_var_name,
+      "' needs to be defined."
+    ))
+  }
+  return(value)
+}
+
 MetabaseClient <- setRefClass( # nolint
   "MetabaseClient",
   fields = list(
@@ -15,17 +29,17 @@ MetabaseClient$methods(
     session <<- ""
     api_uri_prefix <<- "/api"
     if (is.null(user)) {
-      user <<- Sys.getenv("METABASE_USER")
+      user <<- validate_env_var("METABASE_USER", "user")
     } else {
       user <<- user
     }
     if (is.null(password)) {
-      password <<- Sys.getenv("METABASE_PWD")
+      password <<- validate_env_var("METABASE_PWD", "password")
     } else {
       password <<- password
     }
     if (is.null(metabase_url)) {
-      metabase_url <<- Sys.getenv("METABASE_URL")
+      metabase_url <<- validate_env_var("METABASE_URL", "metabase_url")
     } else {
       metabase_url <<- metabase_url
     }
@@ -34,7 +48,8 @@ MetabaseClient$methods(
 
 MetabaseClient$methods(
   authenticate = function() {
-    response <- httr::POST(paste0(.self$metabase_url, .self$api_uri_prefix, "/session"),
+    response <- httr::POST(
+      paste0(.self$metabase_url, .self$api_uri_prefix, "/session"),
       body = list(username = .self$user, password = .self$password),
       encode = "json"
     )
@@ -102,7 +117,9 @@ MetabaseClient$methods(
 
 MetabaseClient$methods(
   get_items = function(collection_id) {
-    items <- .self$authenticated_get(paste0("/collection/", collection_id, "/items"))
+    items <- .self$authenticated_get(
+      paste0("/collection/", collection_id, "/items")
+    )
     do.call(
       dplyr::bind_rows,
       lapply(items$data, function(item) {
@@ -120,9 +137,13 @@ MetabaseClient$methods(
 )
 
 MetabaseClient$methods(
-  create_collection = function(collection_name,parent_collection_id ) {
-    params <- list( "name"=collection_name,'parent_id'=parent_collection_id, 'color'='#509EE3')
-    authenticated_post (endpoint = "/collection/", payload = params)
+  create_collection = function(collection_name, parent_collection_id) {
+    params <- list(
+      "name" = collection_name,
+      "parent_id" = parent_collection_id,
+      "color" = "#509EE3"
+    )
+    authenticated_post(endpoint = "/collection/", payload = params)
   }
 )
 
@@ -132,7 +153,12 @@ MetabaseClient$methods(
     do.call(
       dplyr::bind_rows,
       lapply(tables, function(data) {
-        list(table_id = data$id, table_name = data$name, db_id = data$db_id, db_name = data$db$name)
+        list(
+          table_id = data$id,
+          table_name = data$name,
+          db_id = data$db_id,
+          db_name = data$db$name
+        )
       })
     )
   }
