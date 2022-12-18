@@ -3,6 +3,15 @@ test_that("Client initilizes", {
   expect_equal(mc$session, "")
 })
 
+test_that("Client does not initilize w/o pwd", {
+  pwd <- Sys.getenv("METABASE_PWD")
+  Sys.setenv(METABASE_PWD = "")
+  expect_error(MetabaseClient())
+  mc <- MetabaseClient(password = "explicit_password")
+  Sys.setenv(METABASE_PWD = pwd)
+  expect_equal(mc$password, "explicit_password")
+})
+
 test_that("Databases can be fetched", {
   mc <- MetabaseClient()
   expect_equal(mc$session, "")
@@ -30,6 +39,17 @@ test_that("Item overview can be fetched", {
   })
   expect_true(tibble::is_tibble(items))
   expect_true(all(c("id", "model", "name") %in% colnames(items)))
+})
+
+test_that("Tables can be fetched", {
+  mc <- MetabaseClient()
+  vcr::use_cassette("fetch-tables", {
+    tables <- mc$get_tables()
+  })
+  expect_true(tibble::is_tibble(tables))
+  expect_true(
+    all(c("table_id", "table_name", "db_id", "db_name") %in% colnames(tables))
+  )
 })
 
 test_that("Specific cards can be fetched", {

@@ -1,0 +1,192 @@
+http_interactions:
+- request:
+    method: post
+    uri: https://metabase.citizensforeurope.org/api/session
+    body:
+      encoding: ''
+      string: '{"username":"<sanitized>","password":"<sanitized>"}'
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+      Content-Type: application/json
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      cache-control: max-age=0, no-cache, must-revalidate, proxy-revalidate
+      connection: keep-alive
+      content-encoding: gzip
+      content-security-policy: default-src 'none'; script-src 'self' 'unsafe-eval'
+        https://maps.google.com https://accounts.google.com    'sha256-K2AkR/jTLsGV8PyzWha7/ey1iaD9c5jWRYwa++ZlMZc='
+        'sha256-ib2/2v5zC6gGM6Ety7iYgBUvpy/caRX9xV/pzzV7hf0=' 'sha256-isH538cVBUY8IMlGYGbWtBwr+cGqkc4mN6nLcA7lUjE=';
+        child-src 'self' https://accounts.google.com; style-src 'self' 'unsafe-inline'
+        https://accounts.google.com; font-src *; img-src * 'self' data:; connect-src
+        'self' https://accounts.google.com metabase.us10.list-manage.com   ; manifest-src
+        'self';  frame-ancestors 'none';
+      content-type: application/json;charset=utf-8
+      date: Sat, 17 Dec 2022 19:35:17 GMT
+      expires: Tue, 03 Jul 2001 06:00:00 GMT
+      last-modified: Sat, 17 Dec 2022 19:35:17 GMT
+      server: nginx
+      set-cookie:
+      - metabase.TIMEOUT=alive;SameSite=Lax;Path=/;Secure
+      - metabase.SESSION=3766668d-db97-4d26-b154-3e078266b476;SameSite=Lax;Path=/;Secure;HttpOnly
+      - metabase.DEVICE=2aa5a5eb-cf1b-4386-b323-01e1227e1631;HttpOnly;Path=/;Expires=Wed,
+        17 Dec 2042 19:35:17 GMT;SameSite=None;Secure
+      strict-transport-security: max-age=31536000
+      transfer-encoding: chunked
+      x-content-type-options: nosniff
+      x-frame-options: DENY
+      x-permitted-cross-domain-policies: none
+      x-xss-protection: 1; mode=block
+    body:
+      encoding: ''
+      file: no
+      string: '{"id":"<sanitized>"}'
+  recorded_at: 2022-12-17 19:35:18 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2
+- request:
+    method: get
+    uri: https://metabase.citizensforeurope.org/api/table/
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+      X-Metabase-Session: <sanitized>
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      cache-control: max-age=0, no-cache, must-revalidate, proxy-revalidate
+      connection: keep-alive
+      content-encoding: gzip
+      content-security-policy: default-src 'none'; script-src 'self' 'unsafe-eval'
+        https://maps.google.com https://accounts.google.com    'sha256-K2AkR/jTLsGV8PyzWha7/ey1iaD9c5jWRYwa++ZlMZc='
+        'sha256-ib2/2v5zC6gGM6Ety7iYgBUvpy/caRX9xV/pzzV7hf0=' 'sha256-isH538cVBUY8IMlGYGbWtBwr+cGqkc4mN6nLcA7lUjE=';
+        child-src 'self' https://accounts.google.com; style-src 'self' 'unsafe-inline'
+        https://accounts.google.com; font-src *; img-src * 'self' data:; connect-src
+        'self' https://accounts.google.com metabase.us10.list-manage.com   ; manifest-src
+        'self';  frame-ancestors 'none';
+      content-type: application/json;charset=utf-8
+      date: Sat, 17 Dec 2022 19:35:18 GMT
+      expires: Tue, 03 Jul 2001 06:00:00 GMT
+      last-modified: Sat, 17 Dec 2022 19:35:18 GMT
+      server: nginx
+      set-cookie:
+      - metabase.TIMEOUT=alive;SameSite=Lax;Path=/;Secure
+      - metabase.SESSION=3766668d-db97-4d26-b154-3e078266b476;SameSite=Lax;Path=/;Secure;HttpOnly
+      strict-transport-security: max-age=31536000
+      transfer-encoding: chunked
+      x-content-type-options: nosniff
+      x-frame-options: DENY
+      x-permitted-cross-domain-policies: none
+      x-xss-protection: 1; mode=block
+    body:
+      encoding: ''
+      file: no
+      string: '[{"description":null,"entity_type":"entity/GenericTable","schema":"public","db":{"description":null,"features":["full-join","basic-aggregations","nested-field-columns","standard-deviation-aggregations","persist-models","expression-aggregations","percentile-aggregations","foreign-keys","right-join","left-join","native-parameters","nested-queries","expressions","set-timezone","regex","case-sensitivity-string-filter-options","binning","inner-join","advanced-math-expressions"],"cache_field_values_schedule":"0
+        0 1 * * ? *","timezone":"UTC","auto_run_queries":true,"metadata_sync_schedule":"0
+        39 * * * ? *","name":"CorrelAid CFE Coolify PostgreSQL Synthetic","caveats":null,"creator_id":3,"is_full_sync":true,"updated_at":"2022-10-19T16:12:46.103366Z","cache_ttl":null,"is_sample":false,"id":7,"is_on_demand":false,"options":null,"engine":"postgres","initial_sync_status":"complete","refingerprint":null,"created_at":"2022-09-10T05:28:36.442541Z","points_of_interest":null},"show_in_getting_started":false,"name":"diversity_answers_dict","caveats":null,"updated_at":"2022-10-19T16:12:42.627051Z","active":true,"id":241,"db_id":7,"visibility_type":null,"field_order":"database","initial_sync_status":"complete","display_name":"Diversity
+        Answers Dict","created_at":"2022-10-19T16:12:41.462982Z","points_of_interest":null},{"description":null,"entity_type":"entity/GenericTable","schema":"public","db":{"description":null,"features":["full-join","basic-aggregations","nested-field-columns","standard-deviation-aggregations","persist-models","expression-aggregations","percentile-aggregations","foreign-keys","right-join","left-join","native-parameters","nested-queries","expressions","set-timezone","regex","case-sensitivity-string-filter-options","binning","inner-join","advanced-math-expressions"],"cache_field_values_schedule":"0
+        0 1 * * ? *","timezone":"UTC","auto_run_queries":true,"metadata_sync_schedule":"0
+        39 * * * ? *","name":"CorrelAid CFE Coolify PostgreSQL Synthetic","caveats":null,"creator_id":3,"is_full_sync":true,"updated_at":"2022-10-19T16:12:46.103366Z","cache_ttl":null,"is_sample":false,"id":7,"is_on_demand":false,"options":null,"engine":"postgres","initial_sync_status":"complete","refingerprint":null,"created_at":"2022-09-10T05:28:36.442541Z","points_of_interest":null},"show_in_getting_started":false,"name":"diversity_groups","caveats":null,"updated_at":"2022-10-19T11:39:06.268974Z","active":true,"id":224,"db_id":7,"visibility_type":null,"field_order":"database","initial_sync_status":"complete","display_name":"Diversity
+        Groups","created_at":"2022-10-19T11:39:00.046008Z","points_of_interest":null},{"description":null,"entity_type":"entity/GenericTable","schema":"public","db":{"description":null,"features":["full-join","basic-aggregations","nested-field-columns","standard-deviation-aggregations","persist-models","expression-aggregations","percentile-aggregations","foreign-keys","right-join","left-join","native-parameters","nested-queries","expressions","set-timezone","regex","case-sensitivity-string-filter-options","binning","inner-join","advanced-math-expressions"],"cache_field_values_schedule":"0
+        0 1 * * ? *","timezone":"UTC","auto_run_queries":true,"metadata_sync_schedule":"0
+        39 * * * ? *","name":"CorrelAid CFE Coolify PostgreSQL Synthetic","caveats":null,"creator_id":3,"is_full_sync":true,"updated_at":"2022-10-19T16:12:46.103366Z","cache_ttl":null,"is_sample":false,"id":7,"is_on_demand":false,"options":null,"engine":"postgres","initial_sync_status":"complete","refingerprint":null,"created_at":"2022-09-10T05:28:36.442541Z","points_of_interest":null},"show_in_getting_started":false,"name":"diversity_groups_dict","caveats":null,"updated_at":"2022-10-19T11:39:06.266069Z","active":true,"id":237,"db_id":7,"visibility_type":null,"field_order":"database","initial_sync_status":"complete","display_name":"Diversity
+        Groups Dict","created_at":"2022-10-19T11:39:00.079016Z","points_of_interest":null},{"description":null,"entity_type":"entity/GenericTable","schema":"public","db":{"description":null,"features":["full-join","basic-aggregations","nested-field-columns","standard-deviation-aggregations","persist-models","expression-aggregations","percentile-aggregations","foreign-keys","right-join","left-join","native-parameters","nested-queries","expressions","set-timezone","regex","case-sensitivity-string-filter-options","binning","inner-join","advanced-math-expressions"],"cache_field_values_schedule":"0
+        0 1 * * ? *","timezone":"UTC","auto_run_queries":true,"metadata_sync_schedule":"0
+        39 * * * ? *","name":"CorrelAid CFE Coolify PostgreSQL Synthetic","caveats":null,"creator_id":3,"is_full_sync":true,"updated_at":"2022-10-19T16:12:46.103366Z","cache_ttl":null,"is_sample":false,"id":7,"is_on_demand":false,"options":null,"engine":"postgres","initial_sync_status":"complete","refingerprint":null,"created_at":"2022-09-10T05:28:36.442541Z","points_of_interest":null},"show_in_getting_started":false,"name":"diversity_items","caveats":null,"updated_at":"2022-10-19T11:39:06.276105Z","active":true,"id":229,"db_id":7,"visibility_type":null,"field_order":"database","initial_sync_status":"complete","display_name":"Diversity
+        Items","created_at":"2022-10-19T11:39:00.059203Z","points_of_interest":null},{"description":null,"entity_type":"entity/GenericTable","schema":"public","db":{"description":null,"features":["full-join","basic-aggregations","nested-field-columns","standard-deviation-aggregations","persist-models","expression-aggregations","percentile-aggregations","foreign-keys","right-join","left-join","native-parameters","nested-queries","expressions","set-timezone","regex","case-sensitivity-string-filter-options","binning","inner-join","advanced-math-expressions"],"cache_field_values_schedule":"0
+        0 1 * * ? *","timezone":"UTC","auto_run_queries":true,"metadata_sync_schedule":"0
+        39 * * * ? *","name":"CorrelAid CFE Coolify PostgreSQL Synthetic","caveats":null,"creator_id":3,"is_full_sync":true,"updated_at":"2022-10-19T16:12:46.103366Z","cache_ttl":null,"is_sample":false,"id":7,"is_on_demand":false,"options":null,"engine":"postgres","initial_sync_status":"complete","refingerprint":null,"created_at":"2022-09-10T05:28:36.442541Z","points_of_interest":null},"show_in_getting_started":false,"name":"diversity_items_dict","caveats":null,"updated_at":"2022-10-19T11:39:06.258613Z","active":true,"id":232,"db_id":7,"visibility_type":null,"field_order":"database","initial_sync_status":"complete","display_name":"Diversity
+        Items Dict","created_at":"2022-10-19T11:39:00.066082Z","points_of_interest":null},{"description":null,"entity_type":"entity/GenericTable","schema":"public","db":{"description":null,"features":["full-join","basic-aggregations","nested-field-columns","standard-deviation-aggregations","persist-models","expression-aggregations","percentile-aggregations","foreign-keys","right-join","left-join","native-parameters","nested-queries","expressions","set-timezone","regex","case-sensitivity-string-filter-options","binning","inner-join","advanced-math-expressions"],"cache_field_values_schedule":"0
+        0 1 * * ? *","timezone":"UTC","auto_run_queries":true,"metadata_sync_schedule":"0
+        39 * * * ? *","name":"CorrelAid CFE Coolify PostgreSQL Synthetic","caveats":null,"creator_id":3,"is_full_sync":true,"updated_at":"2022-10-19T16:12:46.103366Z","cache_ttl":null,"is_sample":false,"id":7,"is_on_demand":false,"options":null,"engine":"postgres","initial_sync_status":"complete","refingerprint":null,"created_at":"2022-09-10T05:28:36.442541Z","points_of_interest":null},"show_in_getting_started":false,"name":"diversity_responses","caveats":null,"updated_at":"2022-10-19T11:39:06.261636Z","active":true,"id":234,"db_id":7,"visibility_type":null,"field_order":"database","initial_sync_status":"complete","display_name":"Diversity
+        Responses","created_at":"2022-10-19T11:39:00.071454Z","points_of_interest":null},{"description":null,"entity_type":"entity/GenericTable","schema":"public","db":{"description":null,"features":["full-join","basic-aggregations","nested-field-columns","standard-deviation-aggregations","persist-models","expression-aggregations","percentile-aggregations","foreign-keys","right-join","left-join","native-parameters","nested-queries","expressions","set-timezone","regex","case-sensitivity-string-filter-options","binning","inner-join","advanced-math-expressions"],"cache_field_values_schedule":"0
+        0 1 * * ? *","timezone":"UTC","auto_run_queries":true,"metadata_sync_schedule":"0
+        39 * * * ? *","name":"CorrelAid CFE Coolify PostgreSQL Synthetic","caveats":null,"creator_id":3,"is_full_sync":true,"updated_at":"2022-10-19T16:12:46.103366Z","cache_ttl":null,"is_sample":false,"id":7,"is_on_demand":false,"options":null,"engine":"postgres","initial_sync_status":"complete","refingerprint":null,"created_at":"2022-09-10T05:28:36.442541Z","points_of_interest":null},"show_in_getting_started":false,"name":"diversity_responses_wide","caveats":null,"updated_at":"2022-10-19T17:39:19.507702Z","active":true,"id":244,"db_id":7,"visibility_type":null,"field_order":"database","initial_sync_status":"complete","display_name":"Diversity
+        Responses Wide","created_at":"2022-10-19T17:39:00.041857Z","points_of_interest":null},{"description":null,"entity_type":"entity/GenericTable","schema":"public","db":{"description":null,"features":["full-join","basic-aggregations","nested-field-columns","standard-deviation-aggregations","persist-models","expression-aggregations","percentile-aggregations","foreign-keys","right-join","left-join","native-parameters","nested-queries","expressions","set-timezone","regex","case-sensitivity-string-filter-options","binning","inner-join","advanced-math-expressions"],"cache_field_values_schedule":"0
+        0 1 * * ? *","timezone":"UTC","auto_run_queries":true,"metadata_sync_schedule":"0
+        39 * * * ? *","name":"CorrelAid CFE Coolify PostgreSQL Synthetic","caveats":null,"creator_id":3,"is_full_sync":true,"updated_at":"2022-10-19T16:12:46.103366Z","cache_ttl":null,"is_sample":false,"id":7,"is_on_demand":false,"options":null,"engine":"postgres","initial_sync_status":"complete","refingerprint":null,"created_at":"2022-09-10T05:28:36.442541Z","points_of_interest":null},"show_in_getting_started":false,"name":"diversity_responses_wide_labelled","caveats":null,"updated_at":"2022-10-19T17:39:19.504331Z","active":true,"id":245,"db_id":7,"visibility_type":null,"field_order":"database","initial_sync_status":"complete","display_name":"Diversity
+        Responses Wide Labelled","created_at":"2022-10-19T17:39:00.045673Z","points_of_interest":null},{"description":"Confirmed
+        Sample Company orders for a product, from a user.","entity_type":"entity/TransactionTable","schema":"PUBLIC","db":{"description":"Some
+        example data for you to play around with as you embark on your Metabase journey.","features":["basic-aggregations","standard-deviation-aggregations","expression-aggregations","foreign-keys","right-join","left-join","native-parameters","nested-queries","expressions","case-sensitivity-string-filter-options","binning","inner-join","advanced-math-expressions"],"cache_field_values_schedule":"0
+        0 2 * * ? *","timezone":"UTC","auto_run_queries":true,"metadata_sync_schedule":"0
+        3 * * * ? *","name":"Sample Database","caveats":"You probably don''t want
+        to use this for your business-critical analyses, but hey, it''s your world,
+        we''re just living in it.","creator_id":null,"is_full_sync":true,"updated_at":"2022-12-17T19:03:00.134834Z","cache_ttl":null,"is_sample":true,"id":1,"is_on_demand":false,"options":null,"engine":"h2","initial_sync_status":"complete","refingerprint":null,"created_at":"2022-01-07T13:37:14.986982Z","points_of_interest":"You
+        can find all sorts of different joinable tables ranging from products to people
+        to reviews here."},"show_in_getting_started":false,"name":"ORDERS","caveats":"You
+        can join this on the Products and Orders table using the ID fields. Discount
+        is left null if not applicable.","updated_at":"2022-12-17T19:03:00.142299Z","active":true,"id":2,"db_id":1,"visibility_type":null,"field_order":"database","initial_sync_status":"complete","display_name":"Orders","created_at":"2022-01-07T13:37:15.47252Z","points_of_interest":"Is
+        it? You tell us!"},{"description":null,"entity_type":"entity/GenericTable","schema":"public","db":{"description":null,"features":["full-join","basic-aggregations","nested-field-columns","standard-deviation-aggregations","persist-models","expression-aggregations","percentile-aggregations","foreign-keys","right-join","left-join","native-parameters","nested-queries","expressions","set-timezone","regex","case-sensitivity-string-filter-options","binning","inner-join","advanced-math-expressions"],"cache_field_values_schedule":"0
+        0 1 * * ? *","timezone":"UTC","auto_run_queries":true,"metadata_sync_schedule":"0
+        39 * * * ? *","name":"CorrelAid CFE Coolify PostgreSQL Synthetic","caveats":null,"creator_id":3,"is_full_sync":true,"updated_at":"2022-10-19T16:12:46.103366Z","cache_ttl":null,"is_sample":false,"id":7,"is_on_demand":false,"options":null,"engine":"postgres","initial_sync_status":"complete","refingerprint":null,"created_at":"2022-09-10T05:28:36.442541Z","points_of_interest":null},"show_in_getting_started":false,"name":"penguins","caveats":null,"updated_at":"2022-10-19T16:12:42.620119Z","active":true,"id":239,"db_id":7,"visibility_type":null,"field_order":"database","initial_sync_status":"complete","display_name":"Penguins","created_at":"2022-10-19T16:12:41.457749Z","points_of_interest":null},{"description":"Information
+        on the user accounts registered with Sample Company.","entity_type":"entity/UserTable","schema":"PUBLIC","db":{"description":"Some
+        example data for you to play around with as you embark on your Metabase journey.","features":["basic-aggregations","standard-deviation-aggregations","expression-aggregations","foreign-keys","right-join","left-join","native-parameters","nested-queries","expressions","case-sensitivity-string-filter-options","binning","inner-join","advanced-math-expressions"],"cache_field_values_schedule":"0
+        0 2 * * ? *","timezone":"UTC","auto_run_queries":true,"metadata_sync_schedule":"0
+        3 * * * ? *","name":"Sample Database","caveats":"You probably don''t want
+        to use this for your business-critical analyses, but hey, it''s your world,
+        we''re just living in it.","creator_id":null,"is_full_sync":true,"updated_at":"2022-12-17T19:03:00.134834Z","cache_ttl":null,"is_sample":true,"id":1,"is_on_demand":false,"options":null,"engine":"h2","initial_sync_status":"complete","refingerprint":null,"created_at":"2022-01-07T13:37:14.986982Z","points_of_interest":"You
+        can find all sorts of different joinable tables ranging from products to people
+        to reviews here."},"show_in_getting_started":false,"name":"PEOPLE","caveats":"Note
+        that employees and customer support staff will have accounts.","updated_at":"2022-12-17T19:03:00.143913Z","active":true,"id":3,"db_id":1,"visibility_type":null,"field_order":"database","initial_sync_status":"complete","display_name":"People","created_at":"2022-01-07T13:37:15.476794Z","points_of_interest":"Is
+        it? You tell us!"},{"description":"Includes a catalog of all the products
+        ever sold by the famed Sample Company.","entity_type":"entity/ProductTable","schema":"PUBLIC","db":{"description":"Some
+        example data for you to play around with as you embark on your Metabase journey.","features":["basic-aggregations","standard-deviation-aggregations","expression-aggregations","foreign-keys","right-join","left-join","native-parameters","nested-queries","expressions","case-sensitivity-string-filter-options","binning","inner-join","advanced-math-expressions"],"cache_field_values_schedule":"0
+        0 2 * * ? *","timezone":"UTC","auto_run_queries":true,"metadata_sync_schedule":"0
+        3 * * * ? *","name":"Sample Database","caveats":"You probably don''t want
+        to use this for your business-critical analyses, but hey, it''s your world,
+        we''re just living in it.","creator_id":null,"is_full_sync":true,"updated_at":"2022-12-17T19:03:00.134834Z","cache_ttl":null,"is_sample":true,"id":1,"is_on_demand":false,"options":null,"engine":"h2","initial_sync_status":"complete","refingerprint":null,"created_at":"2022-01-07T13:37:14.986982Z","points_of_interest":"You
+        can find all sorts of different joinable tables ranging from products to people
+        to reviews here."},"show_in_getting_started":false,"name":"PRODUCTS","caveats":"The
+        rating column is an integer from 1-5 where 1 is dreadful and 5 is the best
+        thing ever.","updated_at":"2022-12-17T19:03:00.140848Z","active":true,"id":1,"db_id":1,"visibility_type":null,"field_order":"database","initial_sync_status":"complete","display_name":"Products","created_at":"2022-01-07T13:37:15.463793Z","points_of_interest":"Is
+        it? You tell us!"},{"description":null,"entity_type":"entity/GenericTable","schema":"public","db":{"description":null,"features":["full-join","basic-aggregations","nested-field-columns","standard-deviation-aggregations","persist-models","expression-aggregations","percentile-aggregations","foreign-keys","right-join","left-join","native-parameters","nested-queries","expressions","set-timezone","regex","case-sensitivity-string-filter-options","binning","inner-join","advanced-math-expressions"],"cache_field_values_schedule":"0
+        0 1 * * ? *","timezone":"UTC","auto_run_queries":true,"metadata_sync_schedule":"0
+        39 * * * ? *","name":"CorrelAid CFE Coolify PostgreSQL Synthetic","caveats":null,"creator_id":3,"is_full_sync":true,"updated_at":"2022-10-19T16:12:46.103366Z","cache_ttl":null,"is_sample":false,"id":7,"is_on_demand":false,"options":null,"engine":"postgres","initial_sync_status":"complete","refingerprint":null,"created_at":"2022-09-10T05:28:36.442541Z","points_of_interest":null},"show_in_getting_started":false,"name":"question_answers_dict","caveats":null,"updated_at":"2022-10-19T16:12:42.629365Z","active":true,"id":242,"db_id":7,"visibility_type":null,"field_order":"database","initial_sync_status":"complete","display_name":"Question
+        Answers Dict","created_at":"2022-10-19T16:12:41.465442Z","points_of_interest":null},{"description":null,"entity_type":"entity/GenericTable","schema":"public","db":{"description":null,"features":["full-join","basic-aggregations","nested-field-columns","standard-deviation-aggregations","persist-models","expression-aggregations","percentile-aggregations","foreign-keys","right-join","left-join","native-parameters","nested-queries","expressions","set-timezone","regex","case-sensitivity-string-filter-options","binning","inner-join","advanced-math-expressions"],"cache_field_values_schedule":"0
+        0 1 * * ? *","timezone":"UTC","auto_run_queries":true,"metadata_sync_schedule":"0
+        39 * * * ? *","name":"CorrelAid CFE Coolify PostgreSQL Synthetic","caveats":null,"creator_id":3,"is_full_sync":true,"updated_at":"2022-10-19T16:12:46.103366Z","cache_ttl":null,"is_sample":false,"id":7,"is_on_demand":false,"options":null,"engine":"postgres","initial_sync_status":"complete","refingerprint":null,"created_at":"2022-09-10T05:28:36.442541Z","points_of_interest":null},"show_in_getting_started":false,"name":"question_groups","caveats":null,"updated_at":"2022-10-19T11:39:06.26453Z","active":true,"id":236,"db_id":7,"visibility_type":null,"field_order":"database","initial_sync_status":"complete","display_name":"Question
+        Groups","created_at":"2022-10-19T11:39:00.076563Z","points_of_interest":null},{"description":null,"entity_type":"entity/GenericTable","schema":"public","db":{"description":null,"features":["full-join","basic-aggregations","nested-field-columns","standard-deviation-aggregations","persist-models","expression-aggregations","percentile-aggregations","foreign-keys","right-join","left-join","native-parameters","nested-queries","expressions","set-timezone","regex","case-sensitivity-string-filter-options","binning","inner-join","advanced-math-expressions"],"cache_field_values_schedule":"0
+        0 1 * * ? *","timezone":"UTC","auto_run_queries":true,"metadata_sync_schedule":"0
+        39 * * * ? *","name":"CorrelAid CFE Coolify PostgreSQL Synthetic","caveats":null,"creator_id":3,"is_full_sync":true,"updated_at":"2022-10-19T16:12:46.103366Z","cache_ttl":null,"is_sample":false,"id":7,"is_on_demand":false,"options":null,"engine":"postgres","initial_sync_status":"complete","refingerprint":null,"created_at":"2022-09-10T05:28:36.442541Z","points_of_interest":null},"show_in_getting_started":false,"name":"question_items","caveats":null,"updated_at":"2022-10-19T11:39:06.267569Z","active":true,"id":223,"db_id":7,"visibility_type":null,"field_order":"database","initial_sync_status":"complete","display_name":"Question
+        Items","created_at":"2022-10-19T11:39:00.042918Z","points_of_interest":null},{"description":null,"entity_type":"entity/GenericTable","schema":"public","db":{"description":null,"features":["full-join","basic-aggregations","nested-field-columns","standard-deviation-aggregations","persist-models","expression-aggregations","percentile-aggregations","foreign-keys","right-join","left-join","native-parameters","nested-queries","expressions","set-timezone","regex","case-sensitivity-string-filter-options","binning","inner-join","advanced-math-expressions"],"cache_field_values_schedule":"0
+        0 1 * * ? *","timezone":"UTC","auto_run_queries":true,"metadata_sync_schedule":"0
+        39 * * * ? *","name":"CorrelAid CFE Coolify PostgreSQL Synthetic","caveats":null,"creator_id":3,"is_full_sync":true,"updated_at":"2022-10-19T16:12:46.103366Z","cache_ttl":null,"is_sample":false,"id":7,"is_on_demand":false,"options":null,"engine":"postgres","initial_sync_status":"complete","refingerprint":null,"created_at":"2022-09-10T05:28:36.442541Z","points_of_interest":null},"show_in_getting_started":false,"name":"question_items_dict","caveats":null,"updated_at":"2022-10-19T16:12:42.631393Z","active":true,"id":243,"db_id":7,"visibility_type":null,"field_order":"database","initial_sync_status":"complete","display_name":"Question
+        Items Dict","created_at":"2022-10-19T16:12:41.467758Z","points_of_interest":null},{"description":null,"entity_type":"entity/GenericTable","schema":"public","db":{"description":null,"features":["full-join","basic-aggregations","nested-field-columns","standard-deviation-aggregations","persist-models","expression-aggregations","percentile-aggregations","foreign-keys","right-join","left-join","native-parameters","nested-queries","expressions","set-timezone","regex","case-sensitivity-string-filter-options","binning","inner-join","advanced-math-expressions"],"cache_field_values_schedule":"0
+        0 1 * * ? *","timezone":"UTC","auto_run_queries":true,"metadata_sync_schedule":"0
+        39 * * * ? *","name":"CorrelAid CFE Coolify PostgreSQL Synthetic","caveats":null,"creator_id":3,"is_full_sync":true,"updated_at":"2022-10-19T16:12:46.103366Z","cache_ttl":null,"is_sample":false,"id":7,"is_on_demand":false,"options":null,"engine":"postgres","initial_sync_status":"complete","refingerprint":null,"created_at":"2022-09-10T05:28:36.442541Z","points_of_interest":null},"show_in_getting_started":false,"name":"question_responses","caveats":null,"updated_at":"2022-10-19T11:39:06.274673Z","active":true,"id":228,"db_id":7,"visibility_type":null,"field_order":"database","initial_sync_status":"complete","display_name":"Question
+        Responses","created_at":"2022-10-19T11:39:00.056756Z","points_of_interest":null},{"description":null,"entity_type":"entity/GenericTable","schema":"public","db":{"description":null,"features":["full-join","basic-aggregations","nested-field-columns","standard-deviation-aggregations","persist-models","expression-aggregations","percentile-aggregations","foreign-keys","right-join","left-join","native-parameters","nested-queries","expressions","set-timezone","regex","case-sensitivity-string-filter-options","binning","inner-join","advanced-math-expressions"],"cache_field_values_schedule":"0
+        0 1 * * ? *","timezone":"UTC","auto_run_queries":true,"metadata_sync_schedule":"0
+        39 * * * ? *","name":"CorrelAid CFE Coolify PostgreSQL Synthetic","caveats":null,"creator_id":3,"is_full_sync":true,"updated_at":"2022-10-19T16:12:46.103366Z","cache_ttl":null,"is_sample":false,"id":7,"is_on_demand":false,"options":null,"engine":"postgres","initial_sync_status":"complete","refingerprint":null,"created_at":"2022-09-10T05:28:36.442541Z","points_of_interest":null},"show_in_getting_started":false,"name":"question_responses_wide","caveats":null,"updated_at":"2022-10-19T17:39:19.506169Z","active":true,"id":246,"db_id":7,"visibility_type":null,"field_order":"database","initial_sync_status":"complete","display_name":"Question
+        Responses Wide","created_at":"2022-10-19T17:39:00.048328Z","points_of_interest":null},{"description":null,"entity_type":"entity/GenericTable","schema":"public","db":{"description":null,"features":["full-join","basic-aggregations","nested-field-columns","standard-deviation-aggregations","persist-models","expression-aggregations","percentile-aggregations","foreign-keys","right-join","left-join","native-parameters","nested-queries","expressions","set-timezone","regex","case-sensitivity-string-filter-options","binning","inner-join","advanced-math-expressions"],"cache_field_values_schedule":"0
+        0 1 * * ? *","timezone":"UTC","auto_run_queries":true,"metadata_sync_schedule":"0
+        39 * * * ? *","name":"CorrelAid CFE Coolify PostgreSQL Synthetic","caveats":null,"creator_id":3,"is_full_sync":true,"updated_at":"2022-10-19T16:12:46.103366Z","cache_ttl":null,"is_sample":false,"id":7,"is_on_demand":false,"options":null,"engine":"postgres","initial_sync_status":"complete","refingerprint":null,"created_at":"2022-09-10T05:28:36.442541Z","points_of_interest":null},"show_in_getting_started":false,"name":"respondents","caveats":null,"updated_at":"2022-10-19T11:39:06.271815Z","active":true,"id":226,"db_id":7,"visibility_type":null,"field_order":"database","initial_sync_status":"complete","display_name":"Respondents","created_at":"2022-10-19T11:39:00.051122Z","points_of_interest":null},{"description":null,"entity_type":"entity/GenericTable","schema":"public","db":{"description":null,"features":["full-join","basic-aggregations","nested-field-columns","standard-deviation-aggregations","persist-models","expression-aggregations","percentile-aggregations","foreign-keys","right-join","left-join","native-parameters","nested-queries","expressions","set-timezone","regex","case-sensitivity-string-filter-options","binning","inner-join","advanced-math-expressions"],"cache_field_values_schedule":"0
+        0 1 * * ? *","timezone":"UTC","auto_run_queries":true,"metadata_sync_schedule":"0
+        39 * * * ? *","name":"CorrelAid CFE Coolify PostgreSQL Synthetic","caveats":null,"creator_id":3,"is_full_sync":true,"updated_at":"2022-10-19T16:12:46.103366Z","cache_ttl":null,"is_sample":false,"id":7,"is_on_demand":false,"options":null,"engine":"postgres","initial_sync_status":"complete","refingerprint":null,"created_at":"2022-09-10T05:28:36.442541Z","points_of_interest":null},"show_in_getting_started":false,"name":"responses_grouped","caveats":null,"updated_at":"2022-11-07T12:39:00.043489Z","active":true,"id":235,"db_id":7,"visibility_type":null,"field_order":"database","initial_sync_status":"complete","display_name":"Responses
+        Grouped","created_at":"2022-10-19T11:39:00.07424Z","points_of_interest":null},{"description":"Reviews
+        that Sample Company customers have left on our products.","entity_type":"entity/GenericTable","schema":"PUBLIC","db":{"description":"Some
+        example data for you to play around with as you embark on your Metabase journey.","features":["basic-aggregations","standard-deviation-aggregations","expression-aggregations","foreign-keys","right-join","left-join","native-parameters","nested-queries","expressions","case-sensitivity-string-filter-options","binning","inner-join","advanced-math-expressions"],"cache_field_values_schedule":"0
+        0 2 * * ? *","timezone":"UTC","auto_run_queries":true,"metadata_sync_schedule":"0
+        3 * * * ? *","name":"Sample Database","caveats":"You probably don''t want
+        to use this for your business-critical analyses, but hey, it''s your world,
+        we''re just living in it.","creator_id":null,"is_full_sync":true,"updated_at":"2022-12-17T19:03:00.134834Z","cache_ttl":null,"is_sample":true,"id":1,"is_on_demand":false,"options":null,"engine":"h2","initial_sync_status":"complete","refingerprint":null,"created_at":"2022-01-07T13:37:14.986982Z","points_of_interest":"You
+        can find all sorts of different joinable tables ranging from products to people
+        to reviews here."},"show_in_getting_started":false,"name":"REVIEWS","caveats":"These
+        reviews aren''t tied to orders so it is possible people have reviewed products
+        they did not purchase from us.","updated_at":"2022-12-17T19:03:00.145435Z","active":true,"id":4,"db_id":1,"visibility_type":null,"field_order":"database","initial_sync_status":"complete","display_name":"Reviews","created_at":"2022-01-07T13:37:15.505627Z","points_of_interest":"Is
+        it? You tell us!"},{"description":null,"entity_type":"entity/GenericTable","schema":"public","db":{"description":null,"features":["full-join","basic-aggregations","nested-field-columns","standard-deviation-aggregations","persist-models","expression-aggregations","percentile-aggregations","foreign-keys","right-join","left-join","native-parameters","nested-queries","expressions","set-timezone","regex","case-sensitivity-string-filter-options","binning","inner-join","advanced-math-expressions"],"cache_field_values_schedule":"0
+        0 1 * * ? *","timezone":"UTC","auto_run_queries":true,"metadata_sync_schedule":"0
+        39 * * * ? *","name":"CorrelAid CFE Coolify PostgreSQL Synthetic","caveats":null,"creator_id":3,"is_full_sync":true,"updated_at":"2022-10-19T16:12:46.103366Z","cache_ttl":null,"is_sample":false,"id":7,"is_on_demand":false,"options":null,"engine":"postgres","initial_sync_status":"complete","refingerprint":null,"created_at":"2022-09-10T05:28:36.442541Z","points_of_interest":null},"show_in_getting_started":false,"name":"subquestions","caveats":null,"updated_at":"2022-10-19T11:39:06.277441Z","active":true,"id":230,"db_id":7,"visibility_type":null,"field_order":"database","initial_sync_status":"complete","display_name":"Subquestions","created_at":"2022-10-19T11:39:00.0614Z","points_of_interest":null},{"description":null,"entity_type":"entity/GenericTable","schema":"public","db":{"description":null,"features":["full-join","basic-aggregations","nested-field-columns","standard-deviation-aggregations","persist-models","expression-aggregations","percentile-aggregations","foreign-keys","right-join","left-join","native-parameters","nested-queries","expressions","set-timezone","regex","case-sensitivity-string-filter-options","binning","inner-join","advanced-math-expressions"],"cache_field_values_schedule":"0
+        0 1 * * ? *","timezone":"UTC","auto_run_queries":true,"metadata_sync_schedule":"0
+        39 * * * ? *","name":"CorrelAid CFE Coolify PostgreSQL Synthetic","caveats":null,"creator_id":3,"is_full_sync":true,"updated_at":"2022-10-19T16:12:46.103366Z","cache_ttl":null,"is_sample":false,"id":7,"is_on_demand":false,"options":null,"engine":"postgres","initial_sync_status":"complete","refingerprint":null,"created_at":"2022-09-10T05:28:36.442541Z","points_of_interest":null},"show_in_getting_started":false,"name":"subquestions_dict","caveats":null,"updated_at":"2022-10-19T16:12:42.624547Z","active":true,"id":240,"db_id":7,"visibility_type":null,"field_order":"database","initial_sync_status":"complete","display_name":"Subquestions
+        Dict","created_at":"2022-10-19T16:12:41.460645Z","points_of_interest":null}]'
+  recorded_at: 2022-12-17 19:35:18 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2
