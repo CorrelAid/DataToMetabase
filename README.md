@@ -2,7 +2,9 @@
 
 ## What is this project about?
 
-One of two Metabase-centric projects (see [Metabase-to-Google](https://github.com/CorrelAid/metabase-to-google)). This project will explore automated approaches to (pre-)curating a Metabase instance with Dashboards and queries through the [Metabase API](https://www.metabase.com/docs/latest/api-documentation).
+One of two Metabase-centric projects (see [Metabase-to-Google](https://github.com/CorrelAid/metabase-to-google)).
+This project will explore automated approaches to (pre-)curating a Metabase instance with Dashboards
+and queries through the [Metabase API](https://www.metabase.com/docs/latest/api-documentation).
 
 Two approaches are possible
 
@@ -92,6 +94,27 @@ This will add the package as a dependency to `renv.lock`. Now commit and push yo
 Other team members can then run `renv::restore()` to install the added package(s) on their laptop.
 
 > You might want to **notify** team members about package updates (e.g. in the commit message or via Slack)
+
+### pre-commit setup
+
+The project uses pre-commit to run certain quality assurance checks automatically on each commit. We use the
+cran [precommit package](https://lorenzwalthert.github.io/precommit/index.html). Most of the time it should
+be enough to ensure that the python based `pre-commit` cli tool is installed. The most convenient way is
+to run the following in a command line:
+
+    pip3 install pre-commit --user
+
+For alternative installation instructions please see the precommit webpage. In order to activate the pre-commit
+hooks in a local repository run the following in the project's R console:
+
+    precommit::use_precommit()
+    
+To check whether the setup worked correctly you can run the following command in the command line. Note
+that you might have to open a new session if it is the same one that you used to install `pre-commit` or the
+executable might not be found:
+
+    pre-commit run --all-files
+
 
 ### Data Access
 

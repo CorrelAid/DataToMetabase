@@ -81,7 +81,7 @@ MetabaseClient$methods(
     }
     response <- httr::POST(
       paste0(.self$metabase_url, .self$api_uri_prefix, endpoint),
-      body = jsonlite::toJSON(payload, auto_unbox = TRUE),
+      body = jsonlite::toJSON(payload, auto_unbox = TRUE, null = "null"),
       encode = "raw",
       httr::content_type_json(),
       httr::add_headers("X-Metabase-Session" = .self$session)
@@ -161,5 +161,20 @@ MetabaseClient$methods(
         )
       })
     )
+  }
+)
+
+MetabaseClient$methods(
+  create_card = function(name, collection_id, query) {
+    "Docstring for create card"
+    payload <- list(
+      visualization_settings = setNames(list(), character(0)),
+      collection_id = collection_id,
+      name = name,
+      dataset_query = query,
+      display = "table"
+    )
+    card_response <- .self$authenticated_post("/card", payload)
+    card_response$id
   }
 )

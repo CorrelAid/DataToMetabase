@@ -26,11 +26,6 @@ httr::message_for_status(response)
 session <- httr::content(response, as = "parsed")
 ```
 
-```{r,include=FALSE}
-library(dplyr)
-```
-
-
 For work with the RESTful API we define functions to GET, POST and DELETE
 from the API. the GET and DELETE definitions follow. The definition of the
 function for POST is shown further below, as we will discuss a few suttle
@@ -46,7 +41,6 @@ get_from_metabase <- function(endpoint, query = NULL) {
   httr::stop_for_status(response)
   httr::content(response, as = "parsed")
 }
-
 ```
 ```{r delete_function}
 delete_from_metabase <- function(endpoint) {
@@ -68,7 +62,7 @@ and `get_cards`.
 get_databases <- function() {
   databases <- get_from_metabase("/database")
   do.call(
-    bind_rows,
+    dplyr::bind_rows,
     lapply(databases$data, function(data) {
       list(id = data$id, name = data$name)
     })
@@ -80,7 +74,7 @@ get_tables <- function(database_id) {
     paste0("/database/", database_id),
     query = list(include = "tables")
   )
-  do.call(bind_rows, db$tables)
+  do.call(dplyr::bind_rows, db$tables)
 }
 
 get_collections <- function(archived = "false") {
@@ -89,7 +83,7 @@ get_collections <- function(archived = "false") {
     query = list(archived = archived)
   )
   do.call(
-    bind_rows,
+    dplyr::bind_rows,
     lapply(collections, function(col) {
       list(id = col$id, name = col$name, archived = col$archived)
     })
@@ -101,7 +95,7 @@ get_cards <- function(collection_id) {
     paste0("/collection/", collection_id, "/items")
   )
   do.call(
-    bind_rows,
+    dplyr::bind_rows,
     lapply(items$data, function(d) {
       list(id = d$id, model = d$model, name = d$name)
     })
@@ -120,7 +114,7 @@ are edge cases where the two options vary and these edge cases are important
 for the metamask API.
 
 ```{r post_function}
-post_on_metabase <- function(endpoint, payload=list()) {
+post_on_metabase <- function(endpoint, payload = list()) {
   response <- httr::POST(
     paste0(api_url, endpoint),
     body = jsonlite::toJSON(payload, auto_unbox = TRUE),
@@ -152,8 +146,8 @@ The same goes for the database id and the source table.
 ```{r database_info}
 get_databases()
 get_tables(7) %>%
-  select(id,name) %>%
-  filter(name == 'penguins')
+  select(id, name) %>%
+  filter(name == "penguins")
 ```
 
 ### Payload
@@ -181,8 +175,8 @@ not create too many cards)
 
 ```{r create_card}
 card_creation_response <- post_on_metabase("/card", card_payload)
-post_on_metabase(paste0('/card/',card_creation_response$id,'/query/csv'))
-delete_from_metabase(paste0('/card/',card_creation_response$id))
+post_on_metabase(paste0("/card/", card_creation_response$id, "/query/csv"))
+delete_from_metabase(paste0("/card/", card_creation_response$id))
 ```
 
 #### Subtle Issues
@@ -235,24 +229,21 @@ abstract_query <- list(
 native_query <- list(
   database = 7,
   type = "native",
-  native = list (
+  native = list(
     query = "select * from penguins",
-    `template-tags` = setNames(list(),character(0))
+    `template-tags` = setNames(list(), character(0))
   )
 )
 ```
 
 ```{r abstract_qery}
-card_id <- create_card("Card 1",11,abstract_query)
-post_on_metabase(paste0('/card/',card_id,'/query/csv'))
-delete_from_metabase(paste0('/card/',card_id))
+card_id <- create_card("Card 1", 11, abstract_query)
+post_on_metabase(paste0("/card/", card_id, "/query/csv"))
+delete_from_metabase(paste0("/card/", card_id))
 ```
 
 ```{r native_qery}
-card_id <- create_card("Card 2",11,native_query)
-post_on_metabase(paste0('/card/',card_id,'/query/csv'))
-delete_from_metabase(paste0('/card/',card_id))
+card_id <- create_card("Card 2", 11, native_query)
+post_on_metabase(paste0("/card/", card_id, "/query/csv"))
+delete_from_metabase(paste0("/card/", card_id))
 ```
-
-
-
