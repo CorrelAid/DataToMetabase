@@ -1,6 +1,7 @@
+^DataToMetabase\.Rproj$
+^LICENSE\.md$
+^\.Rproj\.user$
+^\.github$
+^\.pre-commit-config\.yaml$
 ^renv$
 ^renv\.lock$
-^\.github$
-^DataToMetabase\.Rproj$
-^\.Rproj\.user$
-^LICENSE\.md$

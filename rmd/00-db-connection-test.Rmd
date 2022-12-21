@@ -3,11 +3,14 @@ title: "R Notebook"
 ---
 
 ```{r}
-# install.packages("palmerpenguins")
 library(tidyverse)
 ```
 
 ## Load Penguin Data (Local Copy)
+
+Loading the penguin data requires the package
+`palmerpenguins`, which can be installed using
+`install.packages("palmerpenguins")`.
 
 ```{r}
 data_local_raw <- palmerpenguins::penguins
