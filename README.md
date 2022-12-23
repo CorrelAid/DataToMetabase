@@ -169,7 +169,7 @@ Run the linter with `lintr::lint_dir()`
 
 > TODO
 
-$$the following can also be moved to the wiki if you decide to have one$$
+> ‼️ the following can also be moved to the wiki if you decide to have one
 
 explain how the output(s) of this project can be handled/operated, for example:
 

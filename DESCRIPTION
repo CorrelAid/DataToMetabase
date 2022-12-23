@@ -17,4 +17,7 @@ Imports:
     dplyr,
     httr,
     jsonlite,
-    tibble
+    tibble,
+    withr (>= 2.5.0)
+Remotes:  
+    r-lib/withr
