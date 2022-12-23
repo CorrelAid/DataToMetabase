@@ -2,7 +2,9 @@
 #'
 #' @param table_id ID of the table to be used.
 #' @param database_id ID of the database to be used.
+#'
 #' @returns A R representation of the query json.
+#' @export
 create_select_all_columns <- function(table_id, database_id) {
   query <- list(
     database = database_id,
@@ -19,7 +21,9 @@ create_select_all_columns <- function(table_id, database_id) {
 #' @param table_id ID of the table to be used.
 #' @param database_id ID of the database to be used.
 #' @param columns vector of column ids to select
+#'
 #' @returns A R representation of the query json.
+#' @export
 create_select_specific_columns <- function(table_id, database_id, columns) {
   query <- list(
     database = database_id,

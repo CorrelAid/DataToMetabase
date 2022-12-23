@@ -166,7 +166,6 @@ MetabaseClient$methods(
 
 MetabaseClient$methods(
   create_card = function(name, collection_id, query) {
-    "Docstring for create card"
     payload <- list(
       visualization_settings = setNames(list(), character(0)),
       collection_id = collection_id,

@@ -4,11 +4,8 @@ test_that("Client initilizes", {
 })
 
 test_that("Client does not initilize w/o pwd", {
-  pwd <- Sys.getenv("METABASE_PWD")
-  Sys.setenv(METABASE_PWD = "")
-  expect_error(MetabaseClient())
+  withr::with_envvar(new = c("METABASE_PWD" = ""), expect_error(MetabaseClient()))
   mc <- MetabaseClient(password = "explicit_password")
-  Sys.setenv(METABASE_PWD = pwd)
   expect_equal(mc$password, "explicit_password")
 })
 
