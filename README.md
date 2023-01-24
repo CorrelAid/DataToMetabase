@@ -185,3 +185,4 @@ be honest about the limitations of your project, e.g.:
 -   methodological: maybe another model would be more suitable?
 -   reproducibility: what are limits of reproducibility? is there something hard-coded/specific to the data that you used?
 -   best practices: maybe some code is particularly messy and people working on it in the future should know about it in advance?
+
