@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://metabase.citizensforeurope.org/api/session
+    uri: https://notarealinstance.metabase.com/api/session
     body:
       encoding: ''
       string: '{"username":"<sanitized>","password":"<sanitized>"}'
@@ -49,7 +49,7 @@ http_interactions:
   recorded_with: vcr/1.2.0, webmockr/0.8.2
 - request:
     method: get
-    uri: https://metabase.citizensforeurope.org/api/database
+    uri: https://notarealinstance.metabase.com/api/database
     body:
       encoding: ''
       string: ''

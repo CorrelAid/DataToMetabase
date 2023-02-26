@@ -6,6 +6,7 @@
 *.html
 *.nb.html
 ..Rcheck
+*.swp
 
 data/raw
 data/preprocessed_gdpr

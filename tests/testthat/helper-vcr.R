@@ -8,7 +8,9 @@ invisible(vcr::vcr_configure(
     `{"id":"<sanitized>"}` = '\\{"id":"[^"]*"\\}',
     `"first_name":"<sanitized>"` = '"first_name":"[^"]*"',
     `"last_name":"<sanitized>"` = '"last_name":"[^"]*"',
-    `"email":"<sanitized>"` = '"email":"[^"]*"'
-  )
+    `"email":"<sanitized>"` = '"email":"[^"]*"',
+    `https://notarealinstance.metabase.com` = Sys.getenv("METABASE_URL")
+  ),
+  match_requests_on = c("method", "path")
 ))
 vcr::check_cassette_names()
