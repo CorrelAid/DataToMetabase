@@ -6,14 +6,15 @@ One of two Metabase-centric projects (see [Metabase-to-Google](https://github.co
 This project will explore automated approaches to (pre-)curating a Metabase instance with Dashboards
 and queries through the [Metabase API](https://www.metabase.com/docs/latest/api-documentation).
 
-Two approaches are possible
-
--   recommended: send GET/POST requests to the Metabase API to run queries remotely
--   (not recommended / warning): write directly into the Metabase DB where Metabase stores it's meta data
-
-For both cases, we want to track created cards and dashboards in a file or spreadsheed (e.g. Google Sheets).
 
 ## Setup
+
+1. Install R and R-Studio see [R installation](#r-installation) for help.
+
+1. Make sure you have access to a Metabase instance. For setting up a local instance [here](#local-metabase-development-instance)
+
+1. Configure the connection betwen the R-Project and Metabase. See [here](#r-metbase-configuration)
+
 
 ### R installation
 
@@ -115,41 +116,62 @@ executable might not be found:
 
     pre-commit run --all-files
 
+### Local Metabase Development Instance
 
-### Data Access
+The easiest way to try out the R functionality is by connecting to a remote Metabase instance one has access to.
+if this is the case for you skip ahead to [R-Metabase Configuration](#r-metbase-configuration).
 
-To access the data for this challenge, you first need to get secrets/passwords. Reach out to the project host or team lead.
+In the absence of access to a remote metabase instance, it is possible to run the open source deployment
+of Metabase locally using docker. This can be connected to in the same way connections to a remote instance work.
 
-To connect to the Coolify Postgres database, you need to store your credentials in the `.Renviron` file. We'll use a **project**-specific `.Renviron` file:
+To set it up
 
--   with `usethis::edit_r_environ(scope = "project")`
--   or copy the template with `cp .Renviron.example .Renviron` and edit it
+1. Install Docker or Docker Desctop following the [installation instructions on the docker site](https://docs.docker.com/engine/install/)
 
-Copy the content from the decrypted secret link. It should look something like this:
+1. Follow the [running metabase in docker instructions](https://www.metabase.com/docs/latest/installation-and-operation/running-metabase-on-docker) which we repeat for simplicity.
 
-    # logins for supabase
-    COOLIFY_NAME='postgres'
-    COOLIFY_HOST='your-supabase-url'
-    COOLIFY_PORT='5432'
-    COOLIFY_USER='postgres'
-    COOLIFY_PASSWORD='your-supabase-pw'
-    COOLIFY_DB='defaultdb'
+        docker pull metabase/metabase:latest
+        docker run -d -p 3000:3000 --name metabase metabase/metabase
 
-Restart your R session (Session -\> Restart R Session or `.rs.restartR()`)
+1. In you browser go to `localhost:3000`
 
-Read and run `R/00-connect-to-coolify.R` or explore in `00-db-connection-test.Rmd`
+1. Follow the setup instructions. Note the email and password in order to connect with R. You can also Skip the step that lets you connect your own database.
+    Metabase will still have example data available, which is enough to try the R functionality. Any changes however will not persist if the docker container is
+    removed.
 
-#### Description of relevant tables
+This completes the setup of a local metabase instance. The next section describes how to connect it to the R project.
 
-> TODO
+### R-Metbase Configuration 
 
-For now we'll be working with the `penguins` data set from the [`palmerpenguins`](https://allisonhorst.github.io/palmerpenguins/) R package.
+If you have access to a metabase instance, either remotely or locally via docker you need confiugre the connection to the R project.
+
+1. Go to the DataToMetabase project folder
+
+1. Create a `.Renviron` file from the `.Renviron.example` template.
+
+        cp .Renviron.example .Renviron
+
+1. Open `.Renviron` in a text editor
+
+1. Provide your Metabase credentials and the metabase url. The latter is `localhost:3000` in case you are using the local docker instance with the default port. Before filling the file should look like.
+
+        METABASE_USER="<email>"
+        METABASE_PWD="<password>"
+        METABASE_URL="<metabase-url>"
+
+1. Start R-Studio and open the project.
+
+1. Load the project as a package
+
+        devtools::load_all()
+
+1. Create a metabase client instance and show all the metabase databases. If this runs without error and shows the sample database the configuration is correct.
+
+        mc <- MetabaseClient()
+        mc$get_databases()
+
 
 ## Developer Information
-
-### Definition of Done (DoD)
-
-CorrelAid's default Definition of Done can be found [here](https://github.com/CorrelAid/definition-of-done). Adapt as needed.
 
 ### Code styling
 

@@ -1,5 +1,3 @@
-COOLIFY_DB='<db-name>'
-COOLIFY_HOST='<db-host-ip-or-url>' 
-COOLIFY_PORT='<db-port>'
-COOLIFY_USER='<db-user-name>'
-COOLIFY_PASSWORD='<db-password>'
+METABASE_USER="<email>"
+METABASE_PWD="<password>"
+METABASE_URL="<metabase-url>"

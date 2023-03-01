@@ -109,7 +109,7 @@ MetabaseClient$methods(
     do.call(
       dplyr::bind_rows,
       lapply(collections, function(data) {
-        list(id = data$id, location = data$location, name = data$name)
+        list(id = paste0(data$id), location = data$location, name = data$name)
       })
     )
   }
