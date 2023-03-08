@@ -144,11 +144,11 @@ To set it up
 
 This completes the setup of a local metabase instance. The next section describes how to connect it to the R project.
 
-### R-Metbase Configuration 
+### R-Metabase Configuration 
 
 If you have access to a metabase instance, either remotely or locally via docker you need confiugre the connection to the R project.
 
-1. Go to the DataToMetabase project folder
+1. In the terminal, navigate to the DataToMetabase project folder
 
 1. Create a `.Renviron` file from the `.Renviron.example` template.
 
