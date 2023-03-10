@@ -1,3 +1,8 @@
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![MIT License][license-shield]][license-url]
 # Data to Metabase: Automated Curation with the Metabase API
 
 ## What is this project about?
@@ -207,3 +212,15 @@ be honest about the limitations of your project, e.g.:
 -   methodological: maybe another model would be more suitable?
 -   reproducibility: what are limits of reproducibility? is there something hard-coded/specific to the data that you used?
 -   best practices: maybe some code is particularly messy and people working on it in the future should know about it in advance?
+
+
+[contributors-shield]: https://img.shields.io/github/contributors/CorrelAid/DataToMetabase.svg?style=for-the-badge
+[contributors-url]: https://github.com/CorrelAid/DataToMetabase/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/CorrelAid/DataToMetabase.svg?style=for-the-badge
+[forks-url]: https://github.com/CorrelAid/DataToMetabase/network/members
+[stars-shield]: https://img.shields.io/github/stars/CorrelAid/DataToMetabase.svg?style=for-the-badge
+[stars-url]: https://github.com/CorrelAid/DataToMetabase/stargazers
+[issues-shield]: https://img.shields.io/github/issues/CorrelAid/DataToMetabase.svg?style=for-the-badge
+[issues-url]: https://github.com/CorrelAid/DataToMetabase/issues
+[license-shield]: https://img.shields.io/github/license/CorrelAid/DataToMetabase.svg?style=for-the-badge
+[license-url]: https://github.com/CorrelAid/DataToMetabase/blob/master/LICENSE.txt
