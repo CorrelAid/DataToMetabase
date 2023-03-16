@@ -137,10 +137,10 @@ MetabaseClient$methods(
 )
 
 MetabaseClient$methods(
-  create_collection = function(collection_name, parent_collection_id) {
+  create_collection = function(collection_name, parent_collection_id = NULL) {
     params <- list(
       "name" = collection_name,
-      "parent_id" = parent_collection_id,
+      "parent_id" = as.integer(parent_collection_id),
       "color" = "#509EE3"
     )
     authenticated_post(endpoint = "/collection/", payload = params)
@@ -168,12 +168,20 @@ MetabaseClient$methods(
   create_card = function(name, collection_id, query) {
     payload <- list(
       visualization_settings = setNames(list(), character(0)),
-      collection_id = collection_id,
+      collection_id = as.integer(collection_id),
       name = name,
       dataset_query = query,
       display = "table"
     )
     card_response <- .self$authenticated_post("/card", payload)
     card_response$id
+  }
+)
+
+MetabaseClient$methods(
+  run_card = function(card_id) {
+    uri <- paste0("/card/", card_id, "/query/json")
+    card_response <- .self$authenticated_post(uri)
+    dplyr::bind_rows(card_response)
   }
 )

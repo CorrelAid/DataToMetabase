@@ -1,0 +1,55 @@
+---
+title: "Card Creation"
+output: html_document
+date: "2023-03-16"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## How convenience is created
+
+This document illustrates convenience functionality to help with card creation.
+The main idea how to make card creation more convenient is as follows. The Metabase
+client works a lot with ids for robustness reasons. As a result direct usage of the client
+involves a lot of id look ups in order to create a query. The convenience functionality
+aims to spare the user these manual lookups but instead looks all this up in the
+backgroud. In order to do that a Metabase client typically needs to be supplied as an
+argument.
+
+On the one hand this creates more convenience, but on the other hand it is
+potentially more error prone, as there might be non-unique names (even though
+ids would of course be unique). If such cases are encountered it might not be possible
+to use the convenience functionality.
+
+For the remaining examples in this document we created a MetabaseClient `mc`. And
+a collection `card_creation_example` (if it doesn't already exist). All the example
+cards are created within this collection. As the simplest example to illustrate
+that card creation was successful we will run the cards and show a sample
+of the output as this gives a tangible result.
+
+# Examples
+
+## Simple query creation
+
+```{r load_package and create client, echo=FALSE,warning=FALSE,message=FALSE}
+devtools::load_all()
+require("dplyr")
+
+mc <- MetabaseClient()
+```
+
+```{r card_creation_collection, echo=FALSE}
+collection_name <- "card_creation_example"
+
+collections <- mc$get_collections()
+if (!(collection_name %in% (collections %>% pull(name)))) {
+  mc$create_collection(collection_name)
+}
+```
+
+```{r create_card}
+card_id <- create_select_all_card(mc, "My new card", "card_creation_example", "ORDERS")
+mc$run_card(card_id) %>% head()
+```
