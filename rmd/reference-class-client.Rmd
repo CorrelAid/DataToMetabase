@@ -35,3 +35,92 @@ session necessities happening in the background.
 ```{r get_databases}
 mc$get_databases()
 ```
+
+In the rest of the document we will illustrate further examples using the `Sample Database` as this should always be present. It likely has the id 1, but to be on the safe side we extract the id programatically and store it in a variable.
+
+```{r import_dplyr, echo=FALSE,warning=FALSE,message=FALSE}
+require("dplyr")
+```
+
+```{r sample_database-id}
+sample_db_id <- mc$get_databases() %>%
+  filter(name == "Sample Database") %>%
+  pull(id)
+```
+
+With the help of a database id we can habe a look at all the collections that are available for
+this database.
+
+```{r all_collections}
+collections <- mc$get_collections()
+collections
+```
+
+By default there is only our personal collection and the root collection.
+For the further illustrations we'll create a specific collection if it does not exist yet.
+
+```{r metabase_example_collection}
+example_collection <- "Metabase Example Collection"
+personal_collection_id <- as.integer((collections %>% filter(grepl("Personal Collection", name)) %>% pull(id))[1])
+
+if (!(example_collection %in% (collections %>% pull(name)))) {
+  collection_details <- mc$create_collection(example_collection, parent_collection_id = personal_collection_id)
+  example_collection_id <- collection_details$id
+} else {
+  example_collection_id <- collections %>%
+    filter(name == example_collection) %>%
+    pull(id)
+}
+mc$get_collections()
+```
+
+As we can see here we created a new collection. We also stored its ID for future reference.
+At this stage we can also check the web UI to see that collection was actually created
+there as well.
+
+Currently our new collection is empty and therefore not very interesting. Nonetheless
+we can actually check that there are no items in the collection
+
+```{r collection_items}
+mc$get_items(collection_id = example_collection_id)
+```
+
+While we could add child collections to our parent collection if we so desired, this
+is of course not the purpose of Metabase. Instead we we want to actually add cards that
+operate on the sample data. This is done with the `create_card` method of the client,
+which takes three arguments. The name of the card we want to create, the collection_id
+where we want to create it, and the query associated with the card. (Remember you can look
+at the client method documentation with `?MetabaseClient`). The first two arguments are straightforward,
+but the query argument is a little more difficult. That is why this projects provides helper functions
+to create queries. We'll conclude this document by giving a small example, and go into more depth
+about query creation in other documents.
+
+In order to create a specific data example, we need to know which data is abvailbe, which we can check with the `get_tables` method.
+
+```{r get_tables}
+tables <- mc$get_tables()
+order_table_id <- tables %>%
+  filter(table_name == "ORDERS") %>%
+  pull(table_id)
+tables
+```
+
+As an example, we pick the `ORDERS` table and already extracted its ID in the example above.
+This way we can create a query and a card as follows.
+```{r card_creation}
+query <- create_select_all_columns(table_id = order_table_id, database_id = sample_db_id)
+card_name <- "Our first test card"
+card_id <- mc$create_card(card_name, collection_id = example_collection_id, query = query)
+```
+
+We can see that the card was created with `get_items`.
+```{r card_creation_check}
+items <- mc$get_items(example_collection_id)
+items
+```
+
+We can also run the card to see the data output with `run_card`. 
+
+```{r run_card_example}
+mc$run_card(card_id)
+```

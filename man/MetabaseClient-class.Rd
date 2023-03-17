@@ -33,6 +33,7 @@ showClass("MetabaseClient")
 \section{Methods}{
   \describe{
     \item{\code{create_card(name, collection_id, query)}:}{ Create a card of name "name" as part of collection with "collection_id" using query "query". }
+    \item{\code{run_card(card_id)}:}{Executes (runs) the query associated with the card of the given id. The result is returned as a tiblle.  }
     \item{\code{get_tables()}:}{ Get tibble containing abailable tables for queries. }
     \item{\code{create_collection(collection_name, parent_collection_id)}:}{ Create a collection.}
     \item{\code{get_card(card_id)}:}{ Get a json representation of a card. }
