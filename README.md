@@ -1,3 +1,8 @@
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+
 # Data to Metabase: Automated Curation with the Metabase API
 
 ## What is this project about?
@@ -6,7 +11,6 @@ One of two Metabase-centric projects (see [Metabase-to-Google](https://github.co
 This project will explore automated approaches to (pre-)curating a Metabase instance with Dashboards
 and queries through the [Metabase API](https://www.metabase.com/docs/latest/api-documentation).
 
-
 ## Setup
 
 1. Install R and R-Studio see [R installation](#r-installation) for help.
@@ -14,7 +18,6 @@ and queries through the [Metabase API](https://www.metabase.com/docs/latest/api-
 1. Make sure you have access to a Metabase instance. For setting up a local instance [here](#local-metabase-development-instance)
 
 1. Configure the connection betwen the R-Project and Metabase. See [here](#r-metbase-configuration)
-
 
 ### R installation
 
@@ -38,7 +41,7 @@ WEBUI in a browser. Currently not all browsers seem to be supported.
 - Edge ❌
 
 It is recommended that WSL users use RStudio Server because RStudio Desktop does not integrate
-well with WSL. 
+well with WSL.
 
 #### RStudio Server hints
 
@@ -48,7 +51,7 @@ the pro version](https://docs.rstudio.com/ide/server-pro/), but not everything
 might apply. We therefore have a few hints to help to get started.
 
 1. `sudo rstudio-server verify-installation` helps to check whether everything
-  is installed properly and no dynamic dependencies (C header files) are missing. 
+   is installed properly and no dynamic dependencies (C header files) are missing.
 
 2. `sudo rstudio-server start` starts the server
 
@@ -60,9 +63,9 @@ might apply. We therefore have a few hints to help to get started.
 
 ### `renv`: Package / Dependency Management
 
--   `renv` brings project-local R dependency management to our project.
--   `renv` uses a lockfile (`renv.lock`) to capture the state of your library at some point in time.
--   Based on `renv.lock`, RStudio should automatically recognize that it's being needed, thereby downloading and installing the appropriate version of `renv` into the project library.
+- `renv` brings project-local R dependency management to our project.
+- `renv` uses a lockfile (`renv.lock`) to capture the state of your library at some point in time.
+- Based on `renv.lock`, RStudio should automatically recognize that it's being needed, thereby downloading and installing the appropriate version of `renv` into the project library.
 
 > VSCode users might need to manually run `renv::activate()`.\
 > In this Project, `languageserver` for VSCode is ignored by `renv`.
@@ -109,7 +112,7 @@ For alternative installation instructions please see the precommit webpage. In o
 hooks in a local repository run the following in the project's R console:
 
     precommit::use_precommit()
-    
+
 To check whether the setup worked correctly you can run the following command in the command line. Note
 that you might have to open a new session if it is the same one that you used to install `pre-commit` or the
 executable might not be found:
@@ -126,50 +129,49 @@ of Metabase locally using docker. This can be connected to in the same way conne
 
 To set it up
 
-1. Install Docker or Docker Desctop following the [installation instructions on the docker site](https://docs.docker.com/engine/install/)
+1.  Install Docker or Docker Desctop following the [installation instructions on the docker site](https://docs.docker.com/engine/install/)
 
-1. Follow the [running metabase in docker instructions](https://www.metabase.com/docs/latest/installation-and-operation/running-metabase-on-docker) which we repeat for simplicity.
+1.  Follow the [running metabase in docker instructions](https://www.metabase.com/docs/latest/installation-and-operation/running-metabase-on-docker) which we repeat for simplicity.
 
         docker pull metabase/metabase:latest
         docker run -d -p 3000:3000 --name metabase metabase/metabase
 
-1. In you browser go to `localhost:3000`
+1.  In you browser go to `localhost:3000`
 
-1. Follow the setup instructions. Note the email and password in order to connect with R. You can also Skip the step that lets you connect your own database.
+1.  Follow the setup instructions. Note the email and password in order to connect with R. You can also Skip the step that lets you connect your own database.
     Metabase will still have example data available, which is enough to try the R functionality. Any changes however will not persist if the docker container is
     removed.
 
 This completes the setup of a local metabase instance. The next section describes how to connect it to the R project.
 
-### R-Metbase Configuration 
+### R-Metbase Configuration
 
 If you have access to a metabase instance, either remotely or locally via docker you need confiugre the connection to the R project.
 
-1. Go to the DataToMetabase project folder
+1.  Go to the DataToMetabase project folder
 
-1. Create a `.Renviron` file from the `.Renviron.example` template.
+1.  Create a `.Renviron` file from the `.Renviron.example` template.
 
         cp .Renviron.example .Renviron
 
-1. Open `.Renviron` in a text editor
+1.  Open `.Renviron` in a text editor
 
-1. Provide your Metabase credentials and the metabase url. The latter is `localhost:3000` in case you are using the local docker instance with the default port. Before filling the file should look like.
+1.  Provide your Metabase credentials and the metabase url. The latter is `localhost:3000` in case you are using the local docker instance with the default port. Before filling the file should look like.
 
         METABASE_USER="<email>"
         METABASE_PWD="<password>"
         METABASE_URL="<metabase-url>"
 
-1. Start R-Studio and open the project.
+1.  Start R-Studio and open the project.
 
-1. Load the project as a package
+1.  Load the project as a package
 
         devtools::load_all()
 
-1. Create a metabase client instance and show all the metabase databases. If this runs without error and shows the sample database the configuration is correct.
+1.  Create a metabase client instance and show all the metabase databases. If this runs without error and shows the sample database the configuration is correct.
 
         mc <- MetabaseClient()
         mc$get_databases()
-
 
 ## Developer Information
 
@@ -195,15 +197,26 @@ Run the linter with `lintr::lint_dir()`
 
 explain how the output(s) of this project can be handled/operated, for example:
 
--   how to knit the report(s)
--   where to create/find the data visualizations
--   how to update data
--   what would need to be updated if someone wanted to re-run your analysis with different data
+- how to knit the report(s)
+- where to create/find the data visualizations
+- how to update data
+- what would need to be updated if someone wanted to re-run your analysis with different data
 
 ## Limitations
 
 be honest about the limitations of your project, e.g.:
 
--   methodological: maybe another model would be more suitable?
--   reproducibility: what are limits of reproducibility? is there something hard-coded/specific to the data that you used?
--   best practices: maybe some code is particularly messy and people working on it in the future should know about it in advance?
+- methodological: maybe another model would be more suitable?
+- reproducibility: what are limits of reproducibility? is there something hard-coded/specific to the data that you used?
+- best practices: maybe some code is particularly messy and people working on it in the future should know about it in advance?
+
+[contributors-shield]: https://img.shields.io/github/contributors/CorrelAid/DataToMetabase.svg?style=for-the-badge
+[contributors-url]: https://github.com/CorrelAid/DataToMetabase/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/CorrelAid/DataToMetabase.svg?style=for-the-badge
+[forks-url]: https://github.com/CorrelAid/DataToMetabase/network/members
+[stars-shield]: https://img.shields.io/github/stars/CorrelAid/DataToMetabase.svg?style=for-the-badge
+[stars-url]: https://github.com/CorrelAid/DataToMetabase/stargazers
+[issues-shield]: https://img.shields.io/github/issues/CorrelAid/DataToMetabase.svg?style=for-the-badge
+[issues-url]: https://github.com/CorrelAid/DataToMetabase/issues
+[license-shield]: https://img.shields.io/github/license/CorrelAid/DataToMetabase.svg?style=for-the-badge
+[license-url]: https://github.com/CorrelAid/DataToMetabase/blob/master/LICENSE.md
