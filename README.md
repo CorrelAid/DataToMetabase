@@ -11,13 +11,19 @@ One of two Metabase-centric projects (see [Metabase-to-Google](https://github.co
 This project will explore automated approaches to (pre-)curating a Metabase instance with Dashboards
 and queries through the [Metabase API](https://www.metabase.com/docs/latest/api-documentation).
 
+
+## Who is this project for?
+
+Individuals and organizations that already use Metabase as their data visualisation tool, who have some prior knowledge using R and who have a need for automation when creating dashboards and queries.
+
+
 ## Setup
 
-1. Install R and R-Studio see [R installation](#r-installation) for help.
+1. Install R and R-Studio. See [below](#r-installation) for help.
 
-1. Make sure you have access to a Metabase instance. For setting up a local instance [here](#local-metabase-development-instance)
+1. Make sure you have access to a Metabase instance. For setting up a local instance see [below](#local-metabase-development-instance) for help.
 
-1. Configure the connection betwen the R-Project and Metabase. See [here](#r-metbase-configuration)
+1. Configure the connection betwen the R-Project and Metabase. See [below](#r-metbase-configuration) for help.
 
 ### R installation
 
@@ -144,11 +150,12 @@ To set it up
 
 This completes the setup of a local metabase instance. The next section describes how to connect it to the R project.
 
-### R-Metbase Configuration
+
+### R-Metabase Configuration 
 
 If you have access to a metabase instance, either remotely or locally via docker you need confiugre the connection to the R project.
 
-1.  Go to the DataToMetabase project folder
+1. In the terminal, navigate to the DataToMetabase project folder
 
 1.  Create a `.Renviron` file from the `.Renviron.example` template.
 
