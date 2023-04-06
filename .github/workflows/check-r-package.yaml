@@ -35,6 +35,10 @@ jobs:
 
       - name: Check
         uses: r-lib/actions/check-r-package@v2
+        env:
+            METABASE_USER: DUMMY
+            METABASE_PWD: DUMMY
+            METABASE_URL: DUMMY
         with:
           args: 'c("--no-manual", "--as-cran")'
           error-on: '"error"'
