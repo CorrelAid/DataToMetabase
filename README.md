@@ -196,26 +196,6 @@ Run the linter with `lintr::lint_dir()`
 
 **VSCode** users need to install the [`languageserver`](https://github.com/REditorSupport/languageserver) R package and the [R extension](https://marketplace.visualstudio.com/items?itemName=REditorSupport.r) for VSCode.
 
-## How to operate this project?
-
-> TODO
-
-> ‼️ the following can also be moved to the wiki if you decide to have one
-
-explain how the output(s) of this project can be handled/operated, for example:
-
-- how to knit the report(s)
-- where to create/find the data visualizations
-- how to update data
-- what would need to be updated if someone wanted to re-run your analysis with different data
-
-## Limitations
-
-be honest about the limitations of your project, e.g.:
-
-- methodological: maybe another model would be more suitable?
-- reproducibility: what are limits of reproducibility? is there something hard-coded/specific to the data that you used?
-- best practices: maybe some code is particularly messy and people working on it in the future should know about it in advance?
 
 [contributors-shield]: https://img.shields.io/github/contributors/CorrelAid/DataToMetabase.svg?style=for-the-badge
 [contributors-url]: https://github.com/CorrelAid/DataToMetabase/graphs/contributors
