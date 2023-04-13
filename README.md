@@ -196,6 +196,10 @@ Run the linter with `lintr::lint_dir()`
 
 **VSCode** users need to install the [`languageserver`](https://github.com/REditorSupport/languageserver) R package and the [R extension](https://marketplace.visualstudio.com/items?itemName=REditorSupport.r) for VSCode.
 
+# Partner organization
+
+This project was conducted in collaboration with the [Vielfalt entscheidet](https://citizensforeurope.org/advocating_for_inclusion_page/) project of Citizens For Europe gUG. 
+
 
 [contributors-shield]: https://img.shields.io/github/contributors/CorrelAid/DataToMetabase.svg?style=for-the-badge
 [contributors-url]: https://github.com/CorrelAid/DataToMetabase/graphs/contributors
